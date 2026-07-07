@@ -1,0 +1,34 @@
+[gd_scene format=3 uid="uid://dlwwjyuatd4lx"]
+
+[ext_resource type="Texture2D" uid="uid://rkop4pkcfhkq" path="res://icon.svg" id="1_3mbdc"]
+[ext_resource type="Script" uid="uid://bni0pgokvl73d" path="res://PFPBall.gd" id="1_baa0m"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_cq4uw"]
+radius = 32.0
+
+[sub_resource type="SphereMesh" id="SphereMesh_mh33d"]
+radius = 32.0
+height = 64.0
+radial_segments = 4
+
+[node name="PFPBall" type="RigidBody2D" unique_id=1941204685]
+script = ExtResource("1_baa0m")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=939616642]
+visible = false
+shape = SubResource("CircleShape2D_cq4uw")
+
+[node name="ClippingMask" type="MeshInstance2D" parent="." unique_id=1175833029]
+self_modulate = Color(0.21176471, 0.21176471, 0.21176471, 1)
+clip_children = 2
+mesh = SubResource("SphereMesh_mh33d")
+
+[node name="PFP" type="TextureRect" parent="ClippingMask" unique_id=476012982]
+offset_left = -32.0
+offset_top = -32.0
+offset_right = 32.0
+offset_bottom = 32.0
+pivot_offset_ratio = Vector2(0.5, 0.5)
+texture = ExtResource("1_3mbdc")
+expand_mode = 1
+stretch_mode = 4

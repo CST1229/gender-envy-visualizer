@@ -1,0 +1,10 @@
+[gd_scene format=3 uid="uid://ddjga7m0r2tld"]
+
+[ext_resource type="Script" uid="uid://25fyn8pcbfb6" path="res://pfp_downloaders/TwitterDownloaderIlo.gd" id="1_1ti0x"]
+
+[node name="TwitterDownloaderIlo" type="Node" unique_id=137232959]
+script = ExtResource("1_1ti0x")
+target_handle = "CST12292"
+platform_id = "twt"
+
+[node name="HTTPRequest" type="HTTPRequest" parent="." unique_id=1105241741]

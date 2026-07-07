@@ -1,0 +1,12 @@
+[gd_scene format=3 uid="uid://bv441s32pdt1c"]
+
+[ext_resource type="Script" uid="uid://8malisyhe7nt" path="res://pfp_downloaders/RedditDownloader.gd" id="1_46fel"]
+
+[node name="RedditDownloader" type="Node" unique_id=137232959]
+script = ExtResource("1_46fel")
+target_handle = "CST1230"
+platform_id = "reddit"
+special_prefix = "u/"
+is_manual = true
+
+[node name="HTTPRequest" type="HTTPRequest" parent="." unique_id=1105241741]

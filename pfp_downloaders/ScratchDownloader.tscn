@@ -1,0 +1,9 @@
+[gd_scene format=3 uid="uid://i4lv4t80pgnp"]
+
+[ext_resource type="Script" uid="uid://fwjalv6esxyu" path="res://pfp_downloaders/ScratchDownloader.gd" id="1_iui54"]
+
+[node name="ScratchDownloader" type="Node" unique_id=137232959]
+script = ExtResource("1_iui54")
+platform_id = "scr"
+
+[node name="HTTPRequest" type="HTTPRequest" parent="." unique_id=1105241741]

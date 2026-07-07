@@ -1,0 +1,11 @@
+[gd_scene format=3 uid="uid://6g1ssx5juacq"]
+
+[ext_resource type="Script" uid="uid://2aemn3gxapc0" path="res://pfp_downloaders/YTDownloader.gd" id="1_f0r14"]
+
+[node name="YTDownloader" type="Node" unique_id=1241124230]
+script = ExtResource("1_f0r14")
+platform_id = "yt"
+
+[node name="YTPageRequest" type="HTTPRequest" parent="." unique_id=2009810999]
+
+[node name="ImageRequest" type="HTTPRequest" parent="." unique_id=1487973780]

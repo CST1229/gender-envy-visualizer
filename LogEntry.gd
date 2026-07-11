@@ -1,6 +1,8 @@
 class_name LogEntry
+extends Resource
 
 static var list: Array[LogEntry] = [];
+static var altpit: Array[LogEntry] = [];
 
 var raw_line := "";
 
@@ -22,6 +24,15 @@ var platform_id := "";
 var platform_handle := "";
 var platform_downloader: Downloader;
 
+var nickname: String:
+	get:
+		if alt_name:
+			return alt_name;
+		return platform_handle \
+			.trim_prefix("dsc@").trim_suffix(".bsky.social");
+
+var url := "";
+
 func parse_username_for_downloaders(downloaders: Array[Downloader]) -> void:
 	platform_handle = "";
 	platform_id = "";
@@ -38,4 +49,5 @@ func parse_username_for_downloaders(downloaders: Array[Downloader]) -> void:
 		if platform_handle != "":
 			platform_id = downloader.platform_id;
 			platform_downloader = downloader;
+			url = downloader.get_url_for_handle(platform_handle);
 			break;

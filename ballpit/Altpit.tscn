@@ -1,0 +1,19 @@
+[gd_scene format=3 uid="uid://b8vrwg0qwuwyl"]
+
+[ext_resource type="PackedScene" uid="uid://dm2mrkuccb4v6" path="res://ballpit/Ballpit.tscn" id="1_t4qno"]
+[ext_resource type="AudioStream" uid="uid://c3khen474vhca" path="res://ballpit/assets/vegetable_valley_abridged_intro.ogg" id="2_7yksc"]
+
+[node name="Ballpit" unique_id=1987057312 instance=ExtResource("1_t4qno")]
+BPM = 180.0
+ball_drop_frame_wait = 0
+ball_speed = 32.0
+list_id = "altpit"
+
+[node name="PersonName" parent="GUI" parent_id_path=PackedInt32Array(716273630) index="0" unique_id=1742360691]
+text = "The Altpit"
+
+[node name="EntryCount" parent="GUI/PersonName" index="0" unique_id=1137725476]
+text = "(Unsorted! %d entries currently!)"
+
+[node name="Music" parent="." index="7" unique_id=340677985]
+stream = ExtResource("2_7yksc")

@@ -7,7 +7,10 @@ func _ready() -> void:
 	super();
 
 func _fetch_pfp() -> void:
-	var url := "https://github.com/" + target_handle + ".png";
+	var handle := target_handle.to_lower();
+	var url := "https://a.deviantart.net/avatars-big/%s/%s/%s.jpg" % [
+		handle[0], handle[1], handle
+	];
 	http_request.request(url);
 
 func _on_image_completed(
@@ -20,4 +23,4 @@ func _on_image_completed(
 	load_image(body);
 
 func get_url_for_handle(handle: String) -> String:
-	return "https://github.com/%s" % handle;
+	return "https://www.deviantart.com/%s" % handle;

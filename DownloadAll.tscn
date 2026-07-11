@@ -1,12 +1,14 @@
 [gd_scene format=3 uid="uid://btu55sdbvor03"]
 
 [ext_resource type="Script" uid="uid://c4ihkiy0prve4" path="res://DownloadAll.gd" id="1_467wq"]
+[ext_resource type="PackedScene" uid="uid://dm2mrkuccb4v6" path="res://ballpit/Ballpit.tscn" id="2_2kop8"]
 [ext_resource type="PackedScene" uid="uid://i4lv4t80pgnp" path="res://pfp_downloaders/ScratchDownloader.tscn" id="2_8il1n"]
 [ext_resource type="PackedScene" uid="uid://6g1ssx5juacq" path="res://pfp_downloaders/YTDownloader.tscn" id="3_vhc5v"]
 [ext_resource type="PackedScene" uid="uid://cdd38r46qq2b3" path="res://pfp_downloaders/BlueskyDownloader.tscn" id="4_8il1n"]
 [ext_resource type="PackedScene" uid="uid://bv441s32pdt1c" path="res://pfp_downloaders/RedditDownloader.tscn" id="5_vhc5v"]
 [ext_resource type="PackedScene" uid="uid://c0i8xdxsudfii" path="res://pfp_downloaders/GitHubDownloader.tscn" id="6_1yu2x"]
 [ext_resource type="PackedScene" uid="uid://ddjga7m0r2tld" path="res://pfp_downloaders/TwitterDownloaderIlo.tscn" id="7_erl3e"]
+[ext_resource type="PackedScene" uid="uid://dynifdgveh1m6" path="res://pfp_downloaders/DADownloader.tscn" id="8_b2v1h"]
 [ext_resource type="PackedScene" uid="uid://bc868kxwnxpgb" path="res://pfp_downloaders/OtherDownloader.tscn" id="8_erl3e"]
 
 [node name="DownloadAll" type="Control" unique_id=1982837505]
@@ -17,6 +19,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_467wq")
+goto_scene = ExtResource("2_2kop8")
 
 [node name="ScratchDownloader" parent="." unique_id=137232959 instance=ExtResource("2_8il1n")]
 
@@ -29,5 +32,7 @@ script = ExtResource("1_467wq")
 [node name="GitHubDownloader" parent="." unique_id=1160214928 instance=ExtResource("6_1yu2x")]
 
 [node name="TwitterDownloaderIlo" parent="." unique_id=2030405994 instance=ExtResource("7_erl3e")]
+
+[node name="DADownloader" parent="." unique_id=609178525 instance=ExtResource("8_b2v1h")]
 
 [node name="OtherDownloader" parent="." unique_id=552769802 instance=ExtResource("8_erl3e")]

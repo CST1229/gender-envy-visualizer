@@ -31,3 +31,6 @@ func _on_image_completed(
 		return;
 
 	load_image(body);
+
+func get_url_for_handle(handle: String) -> String:
+	return "https://bsky.app/profile/%s" % handle;

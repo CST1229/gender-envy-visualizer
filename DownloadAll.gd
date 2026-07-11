@@ -1,22 +1,31 @@
 extends Control
 
+@export var goto_scene: PackedScene;
+
 var downloaders: Array[Downloader] = [];
-var entries: Array[LogEntry] = LogEntry.list;
 
 var lines := PackedStringArray();
 var line_regex := RegEx.create_from_string(
-	r"^([?>#!-]*)(.+?-.+?-.+?(?: .+?:.+?)?)\s*-\s*([^#(]+)\s*(\(.+?\))?\s*(#.+)?$"
+	r"^([?>#!-]*)(.+?-.+?-.+?(?: .+?:.+?)?|\? )\s*-\s*([^#(]+)\s*(\(.+?\))?\s*(#.+)?$"
 );
 
 func _ready() -> void:
-	entries.clear();
-	
 	for child in get_children():
 		if child is Downloader:
 			downloaders.append(child);
 			child.make_dir();
 	
-	lines = FileAccess.get_file_as_string("the envies.txt").split("\n");
+	LogEntry.list.clear();
+	LogEntry.altpit.clear();
+	populate_entry_list("the envies.txt", LogEntry.list);
+	populate_entry_list("altpit.txt", LogEntry.altpit);
+	await do_downloads(LogEntry.list + LogEntry.altpit);
+	
+	print("Done downloading/fetching pfps!");
+	get_tree().change_scene_to_packed(goto_scene);
+
+func populate_entry_list(path: String, entries: Array[LogEntry]):
+	lines = FileAccess.get_file_as_string(path).split("\n");
 	for line in lines:
 		var reg_match := line_regex.search(line);
 		if reg_match:
@@ -41,14 +50,8 @@ func _ready() -> void:
 			entry.parse_username_for_downloaders(downloaders);
 			
 			entries.append(entry);
-	
-	
-	await do_downloads();
-	
-	print("Done downloading/fetching pfps!");
-	get_tree().change_scene_to_file("res://Ballpit.tscn");
 
-func do_downloads() -> void:
+func do_downloads(entries: Array[LogEntry]) -> void:
 	var do_logs := true;
 	# log cached and manual images
 	var log_all := false;

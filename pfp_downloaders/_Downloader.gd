@@ -43,15 +43,29 @@ func do_fetch() -> void:
 	error_msg = "Loading...";
 	
 	var cache_path := get_cache_path();
+	var cache_path_jpeg := cache_path.get_basename() + ".jpeg";
 	make_dir();
 	if FileAccess.file_exists(cache_path):
 		error_msg = "";
 		pfp_image = Image.new();
 		got_from_cache = true;
-		var error := pfp_image.load_png_from_buffer(FileAccess.get_file_as_bytes(cache_path));
+		var error := pfp_image.load_png_from_buffer(
+			FileAccess.get_file_as_bytes(cache_path)
+		);
 		if error != OK:
 			pfp_image = null;
 			error_msg = "Failed to load cached PFP image: " + error_string(error);
+		download_complete.emit(pfp_image, error_msg);
+	elif FileAccess.file_exists(cache_path_jpeg):
+		error_msg = "";
+		pfp_image = Image.new();
+		got_from_cache = true;
+		var error := pfp_image.load_jpg_from_buffer(
+			FileAccess.get_file_as_bytes(cache_path_jpeg)
+		);
+		if error != OK:
+			pfp_image = null;
+			error_msg = "Failed to load cached JPEG PFP image: " + error_string(error);
 		download_complete.emit(pfp_image, error_msg);
 	else:
 		if disabled:
@@ -80,6 +94,10 @@ func load_image(body: PackedByteArray, image = Image.new()) -> void:
 
 func make_dir() -> void:
 	DirAccess.make_dir_absolute(get_cache_path().get_base_dir());
+
+## Returns a user-visitable page URL, not a PFP URL.
+func get_url_for_handle(_handle: String) -> String:
+	return "";
 
 signal download_complete(image: Image, msg: String);
 signal download_done();

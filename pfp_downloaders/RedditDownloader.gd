@@ -10,7 +10,7 @@ func _fetch_pfp() -> void:
 	OS.shell_open(url);
 	download_complete.emit(
 		null, "Hello, please download the PFP manually from " + url + " and stuff it in " +
-		get_cache_path()
+		get_cache_path() + " (Make sure to replace `&amp;` with `&`!)"
 	);
 
 func _on_request_completed(
@@ -40,3 +40,6 @@ func _on_image_completed(
 		return;
 
 	load_image(body);
+
+func get_url_for_handle(handle: String) -> String:
+	return "https://www.reddit.com/u/%s" % handle;

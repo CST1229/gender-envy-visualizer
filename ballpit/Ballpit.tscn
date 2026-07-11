@@ -1,0 +1,186 @@
+[gd_scene format=3 uid="uid://dm2mrkuccb4v6"]
+
+[ext_resource type="Script" uid="uid://c7u4ery81v4b1" path="res://ballpit/Ballpit.gd" id="1_myxqv"]
+[ext_resource type="Script" uid="uid://box7vch4d13pi" path="res://ballpit/AttachedPolygon2D.gd" id="2_lxbrw"]
+[ext_resource type="PackedScene" uid="uid://dlwwjyuatd4lx" path="res://ballpit/PFPBall.tscn" id="2_twyjn"]
+[ext_resource type="AudioStream" uid="uid://bxwqm8t8pa4qj" path="res://ballpit/assets/D_BLUSTR.mid.ogg" id="3_lxbrw"]
+[ext_resource type="Script" uid="uid://col7s4d70biiw" path="res://ballpit/EditorOnly.gd" id="3_xosqd"]
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_twyjn"]
+blend_mode = 1
+
+[sub_resource type="Gradient" id="Gradient_lxbrw"]
+colors = PackedColorArray(0, 0, 0, 0, 1, 1, 1, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_cq4uw"]
+gradient = SubResource("Gradient_lxbrw")
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_lxbrw"]
+blend_mode = 2
+
+[sub_resource type="LabelSettings" id="LabelSettings_cq4uw"]
+font_size = 48
+outline_size = 32
+outline_color = Color(0, 0, 0, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_dmgc2"]
+font_size = 20
+outline_size = 15
+outline_color = Color(0, 0, 0, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_lxbrw"]
+font_size = 32
+outline_size = 24
+outline_color = Color(0, 0, 0, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_twyjn"]
+font_size = 24
+outline_size = 16
+outline_color = Color(0, 0, 0, 1)
+
+[node name="Ballpit" type="Node2D" unique_id=1987057312]
+script = ExtResource("1_myxqv")
+
+[node name="StartPos" type="Marker2D" parent="." unique_id=864034311]
+position = Vector2(-224, -544)
+
+[node name="PFPBall" parent="StartPos" unique_id=1941204685 instance=ExtResource("2_twyjn")]
+process_mode = 4
+modulate = Color(1, 1, 1, 0.40392157)
+script = ExtResource("3_xosqd")
+
+[node name="Cursor" type="Marker2D" parent="." unique_id=1011396172]
+visible = false
+gizmo_extents = 0.0
+
+[node name="EndPos" type="Marker2D" parent="." unique_id=926651054]
+position = Vector2(224, -544)
+
+[node name="PFPBall2" parent="EndPos" unique_id=2015553876 instance=ExtResource("2_twyjn")]
+process_mode = 4
+modulate = Color(1, 1, 1, 0.40392157)
+script = ExtResource("3_xosqd")
+
+[node name="StaticBody2D" type="StaticBody2D" parent="." unique_id=1310869920]
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="StaticBody2D" unique_id=1794255973]
+position = Vector2(0, 96)
+scale = Vector2(1.4, 1.2)
+polygon = PackedVector2Array(-196, -448, -256, -448, -256, 256, 256, 256, 256, -448, 196, -448, 192, 160, 176, 192, -176, 192, -192, 160)
+
+[node name="Polygon2D" type="Polygon2D" parent="StaticBody2D/CollisionPolygon2D" unique_id=1041664521]
+clip_children = 2
+color = Color(0.3882353, 0.60784316, 1, 1)
+polygon = PackedVector2Array(-196, -448, -256, -448, -256, 256, 256, 256, 256, -448, 196, -448, 192, 160, 176, 192, -176, 192, -192, 160)
+script = ExtResource("2_lxbrw")
+metadata/_edit_lock_ = true
+
+[node name="TextureRect2" type="TextureRect" parent="StaticBody2D/CollisionPolygon2D/Polygon2D" unique_id=78919763]
+material = SubResource("CanvasItemMaterial_twyjn")
+offset_left = -1331.0923
+offset_top = 306.66666
+offset_right = -119.095215
+offset_bottom = 3297.72
+rotation = -1.5707964
+texture = SubResource("GradientTexture1D_cq4uw")
+
+[node name="TextureRect" type="TextureRect" parent="." unique_id=1954563771]
+material = SubResource("CanvasItemMaterial_lxbrw")
+offset_left = 1552.0
+offset_top = -416.0
+offset_right = 3574.998
+offset_bottom = 2575.0532
+rotation = 1.5707964
+texture = SubResource("GradientTexture1D_cq4uw")
+
+[node name="Camera" type="Camera2D" parent="." unique_id=1164816312]
+position_smoothing_enabled = true
+position_smoothing_speed = 2.0
+
+[node name="GUI" type="CanvasLayer" parent="." unique_id=716273630]
+
+[node name="PersonName" type="Label" parent="GUI" unique_id=1742360691]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -48.0
+offset_bottom = -48.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "My gender envy since June 29th..."
+label_settings = SubResource("LabelSettings_cq4uw")
+horizontal_alignment = 1
+vertical_alignment = 2
+
+[node name="EntryCount" type="Label" parent="GUI/PersonName" unique_id=1137725476]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = 32.0
+offset_bottom = 32.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "(%d entries currently!)"
+label_settings = SubResource("LabelSettings_dmgc2")
+horizontal_alignment = 1
+vertical_alignment = 2
+
+[node name="Date" type="Label" parent="GUI" unique_id=2119030895]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 176.0
+offset_right = 176.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "2024-04-19 12:29"
+label_settings = SubResource("LabelSettings_lxbrw")
+vertical_alignment = 2
+
+[node name="Index" type="Label" parent="GUI" unique_id=1455379515]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -176.0
+offset_right = -176.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "#2"
+label_settings = SubResource("LabelSettings_lxbrw")
+horizontal_alignment = 2
+vertical_alignment = 2
+
+[node name="IsFriend" type="Label" parent="GUI" unique_id=1162762267]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 320.0
+offset_right = 320.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "Friend!"
+label_settings = SubResource("LabelSettings_twyjn")
+horizontal_alignment = 1
+vertical_alignment = 2
+
+[node name="URL" type="Label" parent="GUI" unique_id=2047545922]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 16.0
+offset_top = 16.0
+offset_right = 16.0
+offset_bottom = 16.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "https://you.are.l"
+label_settings = SubResource("LabelSettings_twyjn")
+
+[node name="Music" type="AudioStreamPlayer" parent="." unique_id=340677985]
+stream = ExtResource("3_lxbrw")
+autoplay = true
+
+[node name="ClearUITimer" type="Timer" parent="." unique_id=932018823]
+wait_time = 0.1
+one_shot = true

@@ -12,12 +12,6 @@ ball_beats = 4.0
 list_id = "altpit"
 gravity_multiplier = 1.0
 
-[node name="StartPos" parent="." index="0" unique_id=864034311]
-position = Vector2(-256, -678)
-
-[node name="EndPos" parent="." index="2" unique_id=926651054]
-position = Vector2(256, -678)
-
 [node name="CollisionPolygon2D" parent="StaticBody2D" parent_id_path=PackedInt32Array(1310869920) index="0" unique_id=1794255973]
 scale = Vector2(1.6, 1.6)
 

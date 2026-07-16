@@ -1,7 +1,5 @@
 extends Control
 
-@export var goto_scene: PackedScene;
-
 var downloaders: Array[Downloader] = [];
 
 var lines := PackedStringArray();
@@ -17,14 +15,19 @@ func _ready() -> void:
 	
 	LogEntry.list.clear();
 	LogEntry.altpit.clear();
-	populate_entry_list("the envies.txt", LogEntry.list);
-	populate_entry_list("altpit.txt", LogEntry.altpit);
-	await do_downloads(LogEntry.list + LogEntry.altpit);
+	var all_entries: Array[LogEntry] = [];
+	populate_entry_list("the envies.txt", LogEntry.list, all_entries);
+	populate_entry_list("altpit.txt", LogEntry.altpit, all_entries);
+	await do_downloads(all_entries);
 	
 	print("Done downloading/fetching pfps!");
-	get_tree().change_scene_to_packed(goto_scene);
+	if !Global.goto_after_download:
+		Global.goto_after_download = load("res://ballpit/Ballpit.tscn");
+	get_tree().change_scene_to_packed(Global.goto_after_download);
 
-func populate_entry_list(path: String, entries: Array[LogEntry]):
+func populate_entry_list(
+	path: String, entries: Array[LogEntry], all_entries: Array[LogEntry] = []
+):
 	lines = FileAccess.get_file_as_string(path).split("\n");
 	for line in lines:
 		var reg_match := line_regex.search(line);
@@ -50,6 +53,7 @@ func populate_entry_list(path: String, entries: Array[LogEntry]):
 			entry.parse_username_for_downloaders(downloaders);
 			
 			entries.append(entry);
+			all_entries.append(entry);
 
 func do_downloads(entries: Array[LogEntry]) -> void:
 	var do_logs := true;

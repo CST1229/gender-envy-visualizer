@@ -16,6 +16,10 @@ config/features=PackedStringArray("4.7")
 boot_splash/show_image=false
 config/icon="res://icon.svg"
 
+[autoload]
+
+Global="*uid://cwquum085df08"
+
 [display]
 
 window/size/viewport_width=1920

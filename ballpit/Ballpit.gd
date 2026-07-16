@@ -51,6 +51,10 @@ var hovered_ball: PFPBall;
 @onready var target_zoom := camera.zoom;
 
 func _ready() -> void:
+	if !Global.goto_after_download:
+		Global.goto_after_download = load(scene_file_path);
+		get_tree().change_scene_to_file("res://DownloadAll.tscn");
+		return;
 	
 	list = LogEntry[list_id];
 	

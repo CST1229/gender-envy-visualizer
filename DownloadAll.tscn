@@ -1,7 +1,6 @@
 [gd_scene format=3 uid="uid://btu55sdbvor03"]
 
 [ext_resource type="Script" uid="uid://c4ihkiy0prve4" path="res://DownloadAll.gd" id="1_467wq"]
-[ext_resource type="PackedScene" uid="uid://dm2mrkuccb4v6" path="res://ballpit/Ballpit.tscn" id="2_2kop8"]
 [ext_resource type="PackedScene" uid="uid://i4lv4t80pgnp" path="res://pfp_downloaders/ScratchDownloader.tscn" id="2_8il1n"]
 [ext_resource type="PackedScene" uid="uid://6g1ssx5juacq" path="res://pfp_downloaders/YTDownloader.tscn" id="3_vhc5v"]
 [ext_resource type="PackedScene" uid="uid://cdd38r46qq2b3" path="res://pfp_downloaders/BlueskyDownloader.tscn" id="4_8il1n"]
@@ -19,7 +18,6 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_467wq")
-goto_scene = ExtResource("2_2kop8")
 
 [node name="ScratchDownloader" parent="." unique_id=137232959 instance=ExtResource("2_8il1n")]
 

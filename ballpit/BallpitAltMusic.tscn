@@ -7,19 +7,19 @@
 BPM = 355.0
 ball_drop_frame_wait = 0
 ball_drop_beat_wait = 0.125
-ball_speed = 32.0
+ball_speed = 64.0
 start_glows_beats = 32.0
 postselect_beats = 16.0
-gravity_multiplier = 30.0
+gravity_multiplier = 32.0
 
 [node name="StartPos" parent="." index="0" unique_id=864034311]
-position = Vector2(-224, -678)
+position = Vector2(-224, -838)
 
 [node name="EndPos" parent="." index="2" unique_id=926651054]
-position = Vector2(224, -678)
+position = Vector2(224, -838)
 
 [node name="StaticBody2D" parent="." index="3" unique_id=1310869920]
-position = Vector2(0, 32)
+position = Vector2(0, 48)
 
 [node name="CollisionPolygon2D" parent="StaticBody2D" index="0" unique_id=1794255973]
 scale = Vector2(1.4, 1.65)

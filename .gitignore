@@ -1,4 +1,4 @@
 # Godot 4+ specific ignores
 .godot/
 
-movie.mp4
+recordings/

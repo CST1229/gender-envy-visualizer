@@ -1,0 +1,7 @@
+[gd_scene format=3 uid="uid://dexwi0gselucf"]
+
+[ext_resource type="PackedScene" uid="uid://btu55sdbvor03" path="res://DownloadAll.tscn" id="1_qa3ob"]
+[ext_resource type="PackedScene" uid="uid://dgk1wstl0ipgf" path="res://ballpit/BallpitAltMusic.tscn" id="2_qa3ob"]
+
+[node name="DownloadAll" unique_id=1982837505 instance=ExtResource("1_qa3ob")]
+goto_scene = ExtResource("2_qa3ob")

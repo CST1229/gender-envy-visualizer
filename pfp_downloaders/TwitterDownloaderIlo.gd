@@ -5,7 +5,7 @@ extends Downloader
 func _fetch_pfp() -> void:
 	var url := "https://ilo.so/api/tools/x/profile/" + target_handle;
 	http_request.request_completed.connect(_on_request_completed, ConnectFlags.CONNECT_ONE_SHOT);
-	http_request.request(url);
+	http_request.request(url, ["Referer: https://ilo.so/"]);
 
 func _on_request_completed(
 	result: int, response_code: int, _headers: PackedStringArray, body: PackedByteArray

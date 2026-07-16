@@ -1,0 +1,28 @@
+[gd_scene format=3 uid="uid://dgk1wstl0ipgf"]
+
+[ext_resource type="PackedScene" uid="uid://dm2mrkuccb4v6" path="res://ballpit/Ballpit.tscn" id="1_6nywu"]
+[ext_resource type="AudioStream" uid="uid://dnvwgku6vnaqb" path="res://ballpit/assets/dark_castle.mp3" id="2_ngxy3"]
+
+[node name="Ballpit" unique_id=1987057312 instance=ExtResource("1_6nywu")]
+BPM = 355.0
+ball_drop_frame_wait = 0
+ball_drop_beat_wait = 0.125
+ball_speed = 32.0
+start_glows_beats = 32.0
+postselect_beats = 16.0
+gravity_multiplier = 30.0
+
+[node name="StartPos" parent="." index="0" unique_id=864034311]
+position = Vector2(-224, -678)
+
+[node name="EndPos" parent="." index="2" unique_id=926651054]
+position = Vector2(224, -678)
+
+[node name="StaticBody2D" parent="." index="3" unique_id=1310869920]
+position = Vector2(0, 32)
+
+[node name="CollisionPolygon2D" parent="StaticBody2D" index="0" unique_id=1794255973]
+scale = Vector2(1.4, 1.65)
+
+[node name="Music" parent="." index="7" unique_id=340677985]
+stream = ExtResource("2_ngxy3")

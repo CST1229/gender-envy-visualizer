@@ -1,10 +1,10 @@
 [gd_scene format=3 uid="uid://dm2mrkuccb4v6"]
 
 [ext_resource type="Script" uid="uid://c7u4ery81v4b1" path="res://ballpit/Ballpit.gd" id="1_myxqv"]
-[ext_resource type="Script" uid="uid://box7vch4d13pi" path="res://ballpit/AttachedPolygon2D.gd" id="2_lxbrw"]
-[ext_resource type="PackedScene" uid="uid://dlwwjyuatd4lx" path="res://ballpit/PFPBall.tscn" id="2_twyjn"]
+[ext_resource type="Script" uid="uid://box7vch4d13pi" path="res://ballpit/objects/AttachedPolygon2D.gd" id="2_lxbrw"]
+[ext_resource type="PackedScene" uid="uid://dlwwjyuatd4lx" path="res://ballpit/objects/PFPBall.tscn" id="2_twyjn"]
 [ext_resource type="AudioStream" uid="uid://bxwqm8t8pa4qj" path="res://ballpit/assets/D_BLUSTR.mid.ogg" id="3_lxbrw"]
-[ext_resource type="Script" uid="uid://col7s4d70biiw" path="res://ballpit/EditorOnly.gd" id="3_xosqd"]
+[ext_resource type="Script" uid="uid://col7s4d70biiw" path="res://ballpit/objects/EditorOnly.gd" id="3_xosqd"]
 
 [sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_twyjn"]
 blend_mode = 1
@@ -42,7 +42,7 @@ outline_color = Color(0, 0, 0, 1)
 script = ExtResource("1_myxqv")
 
 [node name="StartPos" type="Marker2D" parent="." unique_id=864034311]
-position = Vector2(-224, -544)
+position = Vector2(-256, -678)
 
 [node name="PFPBall" parent="StartPos" unique_id=1941204685 instance=ExtResource("2_twyjn")]
 process_mode = 4
@@ -54,7 +54,7 @@ visible = false
 gizmo_extents = 0.0
 
 [node name="EndPos" type="Marker2D" parent="." unique_id=926651054]
-position = Vector2(224, -544)
+position = Vector2(256, -678)
 
 [node name="PFPBall2" parent="EndPos" unique_id=2015553876 instance=ExtResource("2_twyjn")]
 process_mode = 4
@@ -65,7 +65,7 @@ script = ExtResource("3_xosqd")
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="StaticBody2D" unique_id=1794255973]
 position = Vector2(0, 96)
-scale = Vector2(1.4, 1.2)
+scale = Vector2(1.6, 1.4)
 polygon = PackedVector2Array(-196, -448, -256, -448, -256, 256, 256, 256, 256, -448, 196, -448, 192, 160, 176, 192, -176, 192, -192, 160)
 
 [node name="Polygon2D" type="Polygon2D" parent="StaticBody2D/CollisionPolygon2D" unique_id=1041664521]
@@ -83,6 +83,7 @@ offset_right = -119.095215
 offset_bottom = 3297.72
 rotation = -1.5707964
 texture = SubResource("GradientTexture1D_cq4uw")
+metadata/_edit_lock_ = true
 
 [node name="TextureRect" type="TextureRect" parent="." unique_id=1954563771]
 material = SubResource("CanvasItemMaterial_lxbrw")
@@ -179,7 +180,6 @@ label_settings = SubResource("LabelSettings_twyjn")
 
 [node name="Music" type="AudioStreamPlayer" parent="." unique_id=340677985]
 stream = ExtResource("3_lxbrw")
-autoplay = true
 
 [node name="ClearUITimer" type="Timer" parent="." unique_id=932018823]
 wait_time = 0.1

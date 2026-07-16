@@ -6,14 +6,19 @@ var list := LogEntry.list;
 var BEAT: float:
 	get:
 		return (60.0 / BPM);
-@export var ball_drop_frame_wait := int(floorf(240 * 0.0475));
+@export var ball_drop_frame_wait := int(floorf(240 * 0.04));
 # if 0, uses ball_drop_frame_wait
 @export var ball_drop_beat_wait := 0.0;
-@export var ball_speed := 40.0;
+@export var ball_speed := 16.0;
 @export var start_glows_beats := 16.0;
 @export var ball_beats := 1.0;
-@export var postselect_beats := 4.0;
+@export var postselect_beats := 8.0;
 @export var list_id := "list";
+
+@export var show_all_zoom := 0.65;
+@export var show_ball_zoom := 1.5;
+
+@export var gravity_multiplier := 4.0;
 
 @onready var start_pos: Marker2D = $StartPos;
 @onready var end_pos: Marker2D = $EndPos;
@@ -28,13 +33,17 @@ var BEAT: float:
 @onready var url: Label = $GUI/URL;
 
 @onready var clear_ui_timer: Timer = $ClearUITimer;
+@onready var music: AudioStreamPlayer = $Music;
 
 const BALL_DIAMETER := 64.0;
 const RANDOM_OFFSET_RANGE := 4.0;
 var going_left := false;
 
+var start_tick := 0.0;
+var current_ticks := {};
 
-var pfp_ball_scene: PackedScene = load("res://ballpit/PFPBall.tscn");
+
+var pfp_ball_scene: PackedScene = load("res://ballpit/objects/PFPBall.tscn");
 var balls: Array[PFPBall] = [];
 
 var hovered_ball: PFPBall;
@@ -44,6 +53,12 @@ var hovered_ball: PFPBall;
 func _ready() -> void:
 	
 	list = LogEntry[list_id];
+	
+	PhysicsServer2D.area_set_param(
+		get_viewport().find_world_2d().space,
+		PhysicsServer2D.AREA_PARAM_GRAVITY,
+		980.0 * gravity_multiplier
+	);
 	
 	var ball_count := 0;
 	for entry in list:
@@ -56,6 +71,15 @@ func _ready() -> void:
 	var tween := person_name.create_tween();
 	tween.tween_property(person_name, "modulate:a", 1.0, 4.0);
 	
+	date.text = "";
+	index.text = "";
+	url.text = "";
+	is_friend.visible = false;
+	
+	await get_tree().physics_frame;
+	start_tick = Engine.get_physics_frames();
+	if music:
+		music.play();
 	
 	var rng := RandomNumberGenerator.new();
 	rng.seed = hash("r/egg_irl");
@@ -94,25 +118,36 @@ func _ready() -> void:
 				cursor.position.x -= BALL_DIAMETER;
 		
 		if ball_drop_beat_wait > 0:
-			await wait_beats(ball_drop_beat_wait);
+			await wait_beats(ball_drop_beat_wait, "ball_drop");
 		else:
 			for _wait in ball_drop_frame_wait:
 				await get_tree().physics_frame;
 		i += 1;
 
-func wait_beats(beats: float):
+func wait_beats(beats: float, thread: String = ""):
 	if Input.is_key_pressed(KEY_TAB) || beats <= 0:
 		return null;
-	await get_tree().create_timer(BEAT * beats).timeout;
+	
+	if thread == "":
+		await get_tree().create_timer(BEAT * beats).timeout;
+		return;
+	
+	# complicated sync stuff
+	var tick := Engine.get_physics_frames();
+	var beat_ticks := (BEAT * beats) * Engine.physics_ticks_per_second;
+	if thread not in current_ticks:
+		current_ticks[thread] = float(tick) + beat_ticks;
+	else:
+		current_ticks[thread] += beat_ticks;
+	
+	while Engine.get_physics_frames() < current_ticks[thread]:
+		await get_tree().physics_frame;
 
 func do_glows() -> void:
-	date.text = "";
-	index.text = "";
-	url.text = "";
-	is_friend.visible = false;
-	target_zoom = Vector2.ONE * 0.8;
-	await wait_beats(start_glows_beats);
-	target_zoom = Vector2.ONE * 1.5;
+	camera.zoom = Vector2.ONE;
+	target_zoom = Vector2.ONE * show_all_zoom;
+	await wait_beats(start_glows_beats, "glows");
+	target_zoom = Vector2.ONE * show_ball_zoom;
 	entry_count.text = "";
 	
 	var prev_ball: PFPBall = null;
@@ -120,7 +155,7 @@ func do_glows() -> void:
 		highlight_ball(ball);
 		camera.position = ball.position;
 		
-		await wait_beats(ball_beats);
+		await wait_beats(ball_beats, "glows");
 		prev_ball = ball;
 		prev_ball.glow.visible = false;
 		prev_ball.z_index = balls.size() + prev_ball.index;
@@ -128,7 +163,7 @@ func do_glows() -> void:
 	
 	person_name.text = "";
 	camera.position = Vector2.ZERO;
-	target_zoom = Vector2.ONE * 0.8;
+	target_zoom = Vector2.ONE * show_all_zoom;
 	date.text = "";
 	index.text = "";
 	is_friend.visible = false;
@@ -137,7 +172,11 @@ func do_glows() -> void:
 		var tween := ball.create_tween();
 		tween.tween_property(ball, "modulate:v", 1.0, 2.0);
 	
-	await wait_beats(postselect_beats);
+	await wait_beats(postselect_beats, "glows");
+	
+	if OS.has_feature("movie"):
+		get_tree().quit();
+		return;
 	
 	clear_ui_timer.timeout.connect(func() -> void:
 		for other_ball in balls:

@@ -1,8 +1,8 @@
 [gd_scene format=3 uid="uid://dlwwjyuatd4lx"]
 
-[ext_resource type="Texture2D" uid="uid://rkop4pkcfhkq" path="res://icon.svg" id="1_3mbdc"]
-[ext_resource type="Script" uid="uid://bni0pgokvl73d" path="res://ballpit/PFPBall.gd" id="1_baa0m"]
-[ext_resource type="Texture2D" uid="uid://ddksiimvu04mu" path="res://ballpit/assets/Radial2D.svg" id="3_4aj5b"]
+[ext_resource type="Script" uid="uid://bni0pgokvl73d" path="res://ballpit/objects/PFPBall.gd" id="1_jehy6"]
+[ext_resource type="Texture2D" uid="uid://ddksiimvu04mu" path="res://ballpit/assets/Radial2D.svg" id="2_4n67j"]
+[ext_resource type="Texture2D" uid="uid://rkop4pkcfhkq" path="res://icon.svg" id="3_o70kh"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_cq4uw"]
 radius = 32.0
@@ -13,13 +13,13 @@ height = 64.0
 radial_segments = 4
 
 [node name="PFPBall" type="RigidBody2D" unique_id=1941204685]
-script = ExtResource("1_baa0m")
+script = ExtResource("1_jehy6")
 
 [node name="Glow" type="Sprite2D" parent="." unique_id=1812114060]
 visible = false
 modulate = Color(1, 1, 0, 1)
 scale = Vector2(0.7, 0.7)
-texture = ExtResource("3_4aj5b")
+texture = ExtResource("2_4n67j")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=939616642]
 visible = false
@@ -36,6 +36,6 @@ offset_top = -32.0
 offset_right = 32.0
 offset_bottom = 32.0
 pivot_offset_ratio = Vector2(0.5, 0.5)
-texture = ExtResource("1_3mbdc")
+texture = ExtResource("3_o70kh")
 expand_mode = 1
 stretch_mode = 4

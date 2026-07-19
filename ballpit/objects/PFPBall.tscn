@@ -13,6 +13,7 @@ height = 64.0
 radial_segments = 4
 
 [node name="PFPBall" type="RigidBody2D" unique_id=1941204685]
+continuous_cd = 2
 script = ExtResource("1_jehy6")
 
 [node name="Glow" type="Sprite2D" parent="." unique_id=1812114060]

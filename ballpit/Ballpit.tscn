@@ -42,11 +42,53 @@ outline_color = Color(0, 0, 0, 1)
 script = ExtResource("1_myxqv")
 
 [node name="StartPos" type="Marker2D" parent="." unique_id=864034311]
-position = Vector2(-256, -678)
+position = Vector2(-256, -672)
 
 [node name="PFPBall" parent="StartPos" unique_id=1941204685 instance=ExtResource("2_twyjn")]
 process_mode = 4
 modulate = Color(1, 1, 1, 0.40392157)
+script = ExtResource("3_xosqd")
+
+[node name="PFPBall2" parent="StartPos" unique_id=108625339 instance=ExtResource("2_twyjn")]
+process_mode = 4
+modulate = Color(1, 1, 1, 0.40392157)
+position = Vector2(64, 0)
+script = ExtResource("3_xosqd")
+
+[node name="PFPBall3" parent="StartPos" unique_id=1152521901 instance=ExtResource("2_twyjn")]
+process_mode = 4
+modulate = Color(1, 1, 1, 0.40392157)
+position = Vector2(128, 0)
+script = ExtResource("3_xosqd")
+
+[node name="PFPBall4" parent="StartPos" unique_id=559591498 instance=ExtResource("2_twyjn")]
+process_mode = 4
+modulate = Color(1, 1, 1, 0.40392157)
+position = Vector2(192, 0)
+script = ExtResource("3_xosqd")
+
+[node name="PFPBall5" parent="StartPos" unique_id=1208833079 instance=ExtResource("2_twyjn")]
+process_mode = 4
+modulate = Color(1, 1, 1, 0.40392157)
+position = Vector2(256, 0)
+script = ExtResource("3_xosqd")
+
+[node name="PFPBall6" parent="StartPos" unique_id=575673019 instance=ExtResource("2_twyjn")]
+process_mode = 4
+modulate = Color(1, 1, 1, 0.40392157)
+position = Vector2(320, 0)
+script = ExtResource("3_xosqd")
+
+[node name="PFPBall7" parent="StartPos" unique_id=2134211996 instance=ExtResource("2_twyjn")]
+process_mode = 4
+modulate = Color(1, 1, 1, 0.40392157)
+position = Vector2(384, 0)
+script = ExtResource("3_xosqd")
+
+[node name="PFPBall8" parent="StartPos" unique_id=936024728 instance=ExtResource("2_twyjn")]
+process_mode = 4
+modulate = Color(1, 1, 1, 0.40392157)
+position = Vector2(448, 0)
 script = ExtResource("3_xosqd")
 
 [node name="Cursor" type="Marker2D" parent="." unique_id=1011396172]
@@ -54,7 +96,7 @@ visible = false
 gizmo_extents = 0.0
 
 [node name="EndPos" type="Marker2D" parent="." unique_id=926651054]
-position = Vector2(256, -678)
+position = Vector2(256, -672)
 
 [node name="PFPBall2" parent="EndPos" unique_id=2015553876 instance=ExtResource("2_twyjn")]
 process_mode = 4

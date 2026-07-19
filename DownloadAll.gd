@@ -1,10 +1,12 @@
 extends Control
 
+@export var goto_scene := true;
+
 var downloaders: Array[Downloader] = [];
 
 var lines := PackedStringArray();
 var line_regex := RegEx.create_from_string(
-	r"^([?>#!-]*)(.+?-.+?-.+?(?: .+?:.+?)?|\? )\s*-\s*([^#(]+)\s*(\(.+?\))?\s*(#.+)?$"
+	r"^([?>#!-+]*)(.+?-.+?-.+?(?: .+?:.+?)?|\? )\s*-\s*([^#(]+)\s*(\(.+?\))?\s*(#.+)?$"
 );
 
 func _ready() -> void:
@@ -21,6 +23,9 @@ func _ready() -> void:
 	await do_downloads(all_entries);
 	
 	print("Done downloading/fetching pfps!");
+	if !goto_scene:
+		print("You can close this now");
+		return;
 	if !Global.goto_after_download:
 		Global.goto_after_download = load("res://ballpit/Ballpit.tscn");
 	get_tree().change_scene_to_packed(Global.goto_after_download);
@@ -30,6 +35,8 @@ func populate_entry_list(
 ):
 	lines = FileAccess.get_file_as_string(path).split("\n");
 	for line in lines:
+		if line.begins_with("//"):
+			continue;
 		var reg_match := line_regex.search(line);
 		if reg_match:
 			var match_flags := reg_match.strings[1];
@@ -41,6 +48,7 @@ func populate_entry_list(
 			var entry := LogEntry.new();
 			entry.raw_line = line;
 			entry.flags = match_flags.strip_edges();
+			entry.is_major = "+" in match_flags;
 			entry.is_minor = "?" in match_flags;
 			entry.is_friend = "!" in match_flags;
 			entry.is_random = "-" in match_flags;

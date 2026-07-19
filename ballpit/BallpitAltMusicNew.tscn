@@ -1,0 +1,82 @@
+[gd_scene format=3 uid="uid://c3fwkevjfphk0"]
+
+[ext_resource type="PackedScene" uid="uid://dm2mrkuccb4v6" path="res://ballpit/Ballpit.tscn" id="1_aen8v"]
+[ext_resource type="AudioStream" uid="uid://dnvwgku6vnaqb" path="res://ballpit/assets/dark_castle.mp3" id="2_oje3x"]
+[ext_resource type="PackedScene" uid="uid://dlwwjyuatd4lx" path="res://ballpit/objects/PFPBall.tscn" id="2_op8rf"]
+[ext_resource type="Script" uid="uid://col7s4d70biiw" path="res://ballpit/objects/EditorOnly.gd" id="3_bam5y"]
+
+[node name="Ballpit" unique_id=1987057312 instance=ExtResource("1_aen8v")]
+BPM = 355.0
+ball_drop_frame_wait = 0
+ball_drop_beat_wait = 0.125
+ball_speed = 32.0
+start_glows_beats = 32.0
+postselect_beats = 16.0
+gravity_multiplier = 32.0
+
+[node name="StartPos" parent="." index="0" unique_id=864034311]
+position = Vector2(-480, -832)
+
+[node name="PFPBall9" parent="StartPos" index="8" unique_id=1941204685 instance=ExtResource("2_op8rf")]
+process_mode = 4
+modulate = Color(1, 1, 1, 0.40392157)
+position = Vector2(512, 0)
+script = ExtResource("3_bam5y")
+
+[node name="PFPBall10" parent="StartPos" index="9" unique_id=17747898 instance=ExtResource("2_op8rf")]
+process_mode = 4
+modulate = Color(1, 1, 1, 0.40392157)
+position = Vector2(576, 0)
+script = ExtResource("3_bam5y")
+
+[node name="PFPBall11" parent="StartPos" index="10" unique_id=314404287 instance=ExtResource("2_op8rf")]
+process_mode = 4
+modulate = Color(1, 1, 1, 0.40392157)
+position = Vector2(640, 0)
+script = ExtResource("3_bam5y")
+
+[node name="PFPBall12" parent="StartPos" index="11" unique_id=2083860232 instance=ExtResource("2_op8rf")]
+process_mode = 4
+modulate = Color(1, 1, 1, 0.40392157)
+position = Vector2(704, 0)
+script = ExtResource("3_bam5y")
+
+[node name="PFPBall13" parent="StartPos" index="12" unique_id=1432724769 instance=ExtResource("2_op8rf")]
+process_mode = 4
+modulate = Color(1, 1, 1, 0.40392157)
+position = Vector2(768, 0)
+script = ExtResource("3_bam5y")
+
+[node name="PFPBall14" parent="StartPos" index="13" unique_id=143004289 instance=ExtResource("2_op8rf")]
+process_mode = 4
+modulate = Color(1, 1, 1, 0.40392157)
+position = Vector2(832, 0)
+script = ExtResource("3_bam5y")
+
+[node name="PFPBall15" parent="StartPos" index="14" unique_id=22391770 instance=ExtResource("2_op8rf")]
+process_mode = 4
+modulate = Color(1, 1, 1, 0.40392157)
+position = Vector2(896, 0)
+script = ExtResource("3_bam5y")
+
+[node name="PFPBall16" parent="StartPos" index="15" unique_id=801093103 instance=ExtResource("2_op8rf")]
+process_mode = 4
+modulate = Color(1, 1, 1, 0.40392157)
+position = Vector2(960, 0)
+script = ExtResource("3_bam5y")
+
+[node name="EndPos" parent="." index="2" unique_id=926651054]
+position = Vector2(480, -832)
+
+[node name="StaticBody2D" parent="." index="3" unique_id=1310869920]
+position = Vector2(0, 48)
+
+[node name="CollisionPolygon2D" parent="StaticBody2D" index="0" unique_id=1794255973]
+scale = Vector2(2.7, 1.5)
+polygon = PackedVector2Array(-192, -448, -256, -448, -256, 256, 256, 256, 256, -448, 192, -448, 192, 192, -192, 192)
+
+[node name="Polygon2D" parent="StaticBody2D/CollisionPolygon2D" index="0" unique_id=1041664521]
+polygon = PackedVector2Array(-192, -448, -256, -448, -256, 256, 256, 256, 256, -448, 192, -448, 192, 192, -192, 192)
+
+[node name="Music" parent="." index="7" unique_id=340677985]
+stream = ExtResource("2_oje3x")

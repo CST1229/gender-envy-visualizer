@@ -15,7 +15,7 @@ var BEAT: float:
 @export var postselect_beats := 8.0;
 @export var list_id := "list";
 
-@export var show_all_zoom := 0.65;
+@export var show_all_zoom := 0.55;
 @export var show_ball_zoom := 1.5;
 
 @export var gravity_multiplier := 4.0;
@@ -97,6 +97,8 @@ func _ready() -> void:
 			continue;
 		var ball := pfp_ball_scene.instantiate();
 		ball.position = cursor.position;
+		if going_left:
+			ball.position.x += BALL_DIAMETER / 8.0;
 		
 		# ball.position.x += rng.randfn(0, RANDOM_OFFSET_RANGE);
 		# ball.position.y += rng.randfn(0, RANDOM_OFFSET_RANGE);
@@ -158,6 +160,7 @@ func do_glows() -> void:
 	for ball in balls:
 		highlight_ball(ball);
 		camera.position = ball.position;
+		camera.position.x *= 0.75;
 		
 		await wait_beats(ball_beats, "glows");
 		prev_ball = ball;

@@ -7,6 +7,7 @@ static var altpit: Array[LogEntry] = [];
 var raw_line := "";
 
 var flags := "";
+var is_major := false;
 var is_minor := false;
 var is_friend := false;
 var is_random := false;

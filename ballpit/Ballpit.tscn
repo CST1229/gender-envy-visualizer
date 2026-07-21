@@ -38,6 +38,11 @@ font_size = 24
 outline_size = 16
 outline_color = Color(0, 0, 0, 1)
 
+[sub_resource type="LabelSettings" id="LabelSettings_xosqd"]
+font_size = 32
+outline_size = 24
+outline_color = Color(0, 0, 0, 1)
+
 [node name="Ballpit" type="Node2D" unique_id=1987057312]
 script = ExtResource("1_myxqv")
 
@@ -219,6 +224,21 @@ grow_horizontal = 2
 grow_vertical = 2
 text = "https://you.are.l"
 label_settings = SubResource("LabelSettings_twyjn")
+
+[node name="Warning" type="Label" parent="." unique_id=1935625580]
+z_index = 2
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -384.0
+offset_top = -240.0
+offset_right = 383.0
+offset_bottom = -147.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "this one overfilled from the sheer amount of envy
+go to BallpitAltMusicNew.tscn instead"
+label_settings = SubResource("LabelSettings_xosqd")
 
 [node name="Music" type="AudioStreamPlayer" parent="." unique_id=340677985]
 stream = ExtResource("3_lxbrw")

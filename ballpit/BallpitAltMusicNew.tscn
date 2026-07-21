@@ -78,5 +78,8 @@ polygon = PackedVector2Array(-192, -448, -256, -448, -256, 256, 256, 256, 256, -
 [node name="Polygon2D" parent="StaticBody2D/CollisionPolygon2D" index="0" unique_id=1041664521]
 polygon = PackedVector2Array(-192, -448, -256, -448, -256, 256, 256, 256, 256, -448, 192, -448, 192, 192, -192, 192)
 
-[node name="Music" parent="." index="7" unique_id=340677985]
+[node name="Warning" parent="." index="7" unique_id=1935625580]
+visible = false
+
+[node name="Music" parent="." index="8" unique_id=340677985]
 stream = ExtResource("2_oje3x")

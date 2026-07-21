@@ -25,6 +25,8 @@ func _ready() -> void:
 	print("Done downloading/fetching pfps!");
 	if !goto_scene:
 		print("You can close this now");
+		print("Regular entries: " + str(LogEntry.list.size()));
+		print("Altpit entries: " + str(LogEntry.altpit.size()));
 		return;
 	if !Global.goto_after_download:
 		Global.goto_after_download = load("res://ballpit/Ballpit.tscn");

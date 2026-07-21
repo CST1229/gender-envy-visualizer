@@ -226,7 +226,7 @@ text = "https://you.are.l"
 label_settings = SubResource("LabelSettings_twyjn")
 
 [node name="Warning" type="Label" parent="." unique_id=1935625580]
-z_index = 2
+z_index = 4094
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0

@@ -235,3 +235,5 @@ func _input(_event: InputEvent) -> void:
 func _physics_process(delta: float) -> void:
 	var weight := 1.0 - exp(-1.0 * delta);
 	camera.zoom = camera.zoom.lerp(target_zoom, weight);
+	#index.text = str(Engine.get_frames_per_second());
+	#index.visible = true;

@@ -5,9 +5,6 @@ extends Control
 var downloaders: Array[Downloader] = [];
 
 var lines := PackedStringArray();
-var line_regex := RegEx.create_from_string(
-	r"^([?>#!-+]*)(.+?-.+?-.+?(?: .+?:.+?)?|\? )\s*-\s*([^#(]+)\s*(\(.+?\))?\s*(#.+)?$"
-);
 
 func _ready() -> void:
 	for child in get_children():
@@ -39,31 +36,12 @@ func populate_entry_list(
 	for line in lines:
 		if line.begins_with("//"):
 			continue;
-		var reg_match := line_regex.search(line);
-		if reg_match:
-			var match_flags := reg_match.strings[1];
-			var match_date := reg_match.strings[2];
-			var match_username := reg_match.strings[3];
-			var match_alt_name := reg_match.strings[4];
-			var match_comment := reg_match.strings[5];
-			
-			var entry := LogEntry.new();
-			entry.raw_line = line;
-			entry.flags = match_flags.strip_edges();
-			entry.is_major = "+" in match_flags;
-			entry.is_minor = "?" in match_flags;
-			entry.is_friend = "!" in match_flags;
-			entry.is_random = "-" in match_flags;
-			entry.is_coming_out = ">" in match_flags;
-			entry.is_deadname = "#" in match_flags;
-			entry.date = match_date.strip_edges();
-			entry.username = match_username.strip_edges();
-			entry.alt_name = match_alt_name.strip_edges().trim_prefix("(").trim_suffix(")");
-			entry.comment = match_comment.strip_edges().trim_prefix("#").strip_edges();
-			entry.parse_username_for_downloaders(downloaders);
-			
-			entries.append(entry);
-			all_entries.append(entry);
+		var entry := LogEntry.parse_log_line(line);
+		if !entry:
+			continue;
+		entry.parse_username_for_downloaders(downloaders);
+		entries.append(entry);
+		all_entries.append(entry);
 
 func do_downloads(entries: Array[LogEntry]) -> void:
 	var do_logs := true;

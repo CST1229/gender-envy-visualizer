@@ -1,6 +1,7 @@
 [gd_scene format=3 uid="uid://dm2mrkuccb4v6"]
 
 [ext_resource type="Script" uid="uid://c7u4ery81v4b1" path="res://ballpit/Ballpit.gd" id="1_myxqv"]
+[ext_resource type="Script" uid="uid://c564dd0f02rcc" path="res://downloader/GotoHereAfterDownload.gd" id="2_k2jv5"]
 [ext_resource type="Script" uid="uid://box7vch4d13pi" path="res://ballpit/objects/AttachedPolygon2D.gd" id="2_lxbrw"]
 [ext_resource type="PackedScene" uid="uid://dlwwjyuatd4lx" path="res://ballpit/objects/PFPBall.tscn" id="2_twyjn"]
 [ext_resource type="AudioStream" uid="uid://bxwqm8t8pa4qj" path="res://ballpit/assets/D_BLUSTR.mid.ogg" id="3_lxbrw"]
@@ -45,6 +46,9 @@ outline_color = Color(0, 0, 0, 1)
 
 [node name="Ballpit" type="Node2D" unique_id=1987057312]
 script = ExtResource("1_myxqv")
+
+[node name="GotoHereAfterDownload" type="Node" parent="." unique_id=1966289395]
+script = ExtResource("2_k2jv5")
 
 [node name="StartPos" type="Marker2D" parent="." unique_id=864034311]
 position = Vector2(-256, -672)

@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://btu55sdbvor03"]
 
-[ext_resource type="Script" uid="uid://c4ihkiy0prve4" path="res://DownloadAll.gd" id="1_467wq"]
+[ext_resource type="Script" uid="uid://c4ihkiy0prve4" path="res://downloader/DownloadAll.gd" id="1_467wq"]
 [ext_resource type="PackedScene" uid="uid://i4lv4t80pgnp" path="res://pfp_downloaders/ScratchDownloader.tscn" id="2_8il1n"]
 [ext_resource type="PackedScene" uid="uid://6g1ssx5juacq" path="res://pfp_downloaders/YTDownloader.tscn" id="3_vhc5v"]
 [ext_resource type="PackedScene" uid="uid://cdd38r46qq2b3" path="res://pfp_downloaders/BlueskyDownloader.tscn" id="4_8il1n"]

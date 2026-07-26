@@ -34,6 +34,35 @@ var nickname: String:
 
 var url := "";
 
+
+static var line_regex := RegEx.create_from_string(
+	r"^([?>#!+\-]*)(.+?-.+?-.+?(?: .+?:.+?)?|\? )\s*-\s*([^#(]+)\s*(\(.+?\))?\s*(#.+)?$"
+);
+static func parse_log_line(line: String) -> LogEntry:
+	var reg_match := line_regex.search(line);
+	if !reg_match:
+		return null;
+	var match_flags := reg_match.strings[1];
+	var match_date := reg_match.strings[2];
+	var match_username := reg_match.strings[3];
+	var match_alt_name := reg_match.strings[4];
+	var match_comment := reg_match.strings[5];
+	
+	var entry := LogEntry.new();
+	entry.raw_line = line;
+	entry.flags = match_flags.strip_edges();
+	entry.is_major = "+" in match_flags;
+	entry.is_minor = "?" in match_flags;
+	entry.is_friend = "!" in match_flags;
+	entry.is_random = "-" in match_flags;
+	entry.is_coming_out = ">" in match_flags;
+	entry.is_deadname = "#" in match_flags;
+	entry.date = match_date.strip_edges();
+	entry.username = match_username.strip_edges();
+	entry.alt_name = match_alt_name.strip_edges().trim_prefix("(").trim_suffix(")");
+	entry.comment = match_comment.strip_edges().trim_prefix("#").strip_edges();
+	return entry;
+
 func parse_username_for_downloaders(downloaders: Array[Downloader]) -> void:
 	platform_handle = "";
 	platform_id = "";

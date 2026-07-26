@@ -1,0 +1,22 @@
+[gd_scene format=3 uid="uid://c8rspsga6xlbj"]
+
+[ext_resource type="Script" uid="uid://dgscyv4351gih" path="res://misc_utils/AppearanceCounter.gd" id="1_fllvx"]
+[ext_resource type="Script" uid="uid://c66y44ktvi4l4" path="res://misc_utils/Stats.gd" id="1_qlp34"]
+[ext_resource type="Script" uid="uid://c564dd0f02rcc" path="res://downloader/GotoHereAfterDownload.gd" id="2_py0av"]
+[ext_resource type="Script" uid="uid://bni7tbj7ykljq" path="res://misc_utils/PlatformCount.gd" id="3_py0av"]
+[ext_resource type="Script" uid="uid://c2wjwyusijpsu" path="res://misc_utils/DateStuff.gd" id="5_qp1tn"]
+
+[node name="Stats" type="Node2D" unique_id=1810555353]
+script = ExtResource("1_qlp34")
+
+[node name="GotoHereAfterDownload" type="Node" parent="." unique_id=563619407]
+script = ExtResource("2_py0av")
+
+[node name="AppearanceCounter" type="Node" parent="." unique_id=409842300]
+script = ExtResource("1_fllvx")
+
+[node name="PlatformCount" type="Node" parent="." unique_id=867278761]
+script = ExtResource("3_py0av")
+
+[node name="DateStuff" type="Node" parent="." unique_id=1971168924]
+script = ExtResource("5_qp1tn")

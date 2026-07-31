@@ -2,6 +2,8 @@ extends Node2D
 
 var list := LogEntry.list;
 
+@export var mute := false;
+
 @export var BPM := 144.0;
 var BEAT: float:
 	get:
@@ -77,7 +79,7 @@ func _ready() -> void:
 	
 	await get_tree().physics_frame;
 	start_tick = Engine.get_physics_frames();
-	if music:
+	if music && !mute:
 		music.play();
 	
 	var rng := RandomNumberGenerator.new();

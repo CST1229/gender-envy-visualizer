@@ -5,6 +5,7 @@ key:
 	![date] = person i know (people without ! are just random people that i have no acquaintance with at all)
 	-[date] = person i slightly less know
 	>[date] = coming out moment or similar
+	<[date] = retroactive hit
 	#[date] = you can only guess what this means
 name syntaxes:
 	handle (alternate name)
@@ -21,10 +22,10 @@ Honorable "constant" undated mentions:
 		- Tally, Mistium, pufferfish101007, Tacodiva, Melody, Lily, the other Lily, _gge
 		- Lapis, Sockie, Octo.wav, Cocoa, Waffle, funglebomb
 
-#>2021?-??-?? ??:?? - CobaltBW
->!2025-03-01 11:18 - dsc@verolecat (Sockie)
->!2025-10-10 14:20 - dsc@fudgiecatdx2 (FudgiecatDX)
->!2026-06-20 16:50 - dsc@octowav (Octo.wav)
+<>#2021?-??-?? ??:?? - CobaltBW
+<>!2025-03-01 11:18 - dsc@verolecat (Sockie)
+<>!2025-10-10 14:20 - dsc@fudgiecatdx2 (FudgiecatDX)
+<>!2026-06-20 16:50 - dsc@octowav (Octo.wav)
 
 -end retroactive entries-
 
@@ -216,3 +217,12 @@ Honorable "constant" undated mentions:
 2026-07-24 23:09 - twt@McMellon12_
 2026-07-26 15:11 - u/ZarfTMarf69
 2026-07-26 23:40 - yt@Nyekomei
+2026-07-27 01:47 - yt@Butterscotch_P1e
+2026-07-27 17:47 - scr@technoboy10
+2026-07-28 19:47 - twt@castpixel
+2026-07-29 12:28 - gh@mkwcat
+2026-07-30 06:27 - twt@RaspmerySizzle
+2026-07-30 11:17 - gh@WangleLine
+2026-07-30 21:12 - yt@Iristallite
+2026-07-30 23:57 - yt@Nyekomei
+2026-07-31 18:13 - yt@aquifolly

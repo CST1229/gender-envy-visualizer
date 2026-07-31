@@ -11,6 +11,7 @@ var is_major := false;
 var is_minor := false;
 var is_friend := false;
 var is_random := false;
+var is_retroactive := false;
 var is_coming_out := false;
 var is_deadname := false;
 
@@ -36,7 +37,7 @@ var url := "";
 
 
 static var line_regex := RegEx.create_from_string(
-	r"^([?>#!+\-]*)(.+?-.+?-.+?(?: .+?:.+?)?|\? )\s*-\s*([^#(]+)\s*(\(.+?\))?\s*(#.+)?$"
+	r"^([?<>#!+\-]*)(.+?-.+?-.+?(?: .+?:.+?)?|\? )\s*-\s*([^#(]+)\s*(\(.+?\))?\s*(#.+)?$"
 );
 static func parse_log_line(line: String) -> LogEntry:
 	var reg_match := line_regex.search(line);
@@ -55,6 +56,7 @@ static func parse_log_line(line: String) -> LogEntry:
 	entry.is_minor = "?" in match_flags;
 	entry.is_friend = "!" in match_flags;
 	entry.is_random = "-" in match_flags;
+	entry.is_retroactive = "<" in match_flags;
 	entry.is_coming_out = ">" in match_flags;
 	entry.is_deadname = "#" in match_flags;
 	entry.date = match_date.strip_edges();

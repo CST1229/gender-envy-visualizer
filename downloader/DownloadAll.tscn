@@ -33,4 +33,8 @@ script = ExtResource("1_467wq")
 
 [node name="DADownloader" parent="." unique_id=609178525 instance=ExtResource("8_b2v1h")]
 
+[node name="OtherDownloaderDiscord" parent="." unique_id=1505550586 instance=ExtResource("8_erl3e")]
+platform_id = "dsc"
+special_prefix = ""
+
 [node name="OtherDownloader" parent="." unique_id=552769802 instance=ExtResource("8_erl3e")]

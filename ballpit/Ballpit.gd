@@ -222,12 +222,15 @@ func highlight_ball(ball: PFPBall) -> void:
 	ball.z_index = 4096;
 
 func _input(_event: InputEvent) -> void:
-	if _event is not InputEventMouseButton:
-		return;
-	var event := _event as InputEventMouseButton;
-	if event.pressed && event.button_index == MouseButton.MOUSE_BUTTON_LEFT:
-		if hovered_ball && hovered_ball.entry.url:
-			OS.shell_open(hovered_ball.entry.url);
+	if _event is InputEventMouseButton:
+		var event := _event as InputEventMouseButton;
+		if event.pressed && event.button_index == MouseButton.MOUSE_BUTTON_LEFT:
+			if hovered_ball && hovered_ball.entry.url:
+				OS.shell_open(hovered_ball.entry.url);
+	elif _event is InputEventKey && !_event.is_echo() && _event.is_pressed() && (
+			_event as InputEventKey
+		).keycode == KEY_F10:
+			music.volume_linear = 0.0 if music.volume_linear > 0 else 1.0;
 
 func _physics_process(delta: float) -> void:
 	var weight := 1.0 - exp(-1.0 * delta);

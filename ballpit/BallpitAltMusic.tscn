@@ -12,17 +12,17 @@ start_glows_beats = 32.0
 postselect_beats = 16.0
 gravity_multiplier = 32.0
 
-[node name="StartPos" parent="." index="0" unique_id=864034311]
+[node name="StartPos" parent="." index="1" unique_id=864034311]
 position = Vector2(-224, -838)
 
-[node name="EndPos" parent="." index="2" unique_id=926651054]
+[node name="EndPos" parent="." index="3" unique_id=926651054]
 position = Vector2(224, -838)
 
-[node name="StaticBody2D" parent="." index="3" unique_id=1310869920]
+[node name="StaticBody2D" parent="." index="4" unique_id=1310869920]
 position = Vector2(0, 48)
 
 [node name="CollisionPolygon2D" parent="StaticBody2D" index="0" unique_id=1794255973]
 scale = Vector2(1.4, 1.65)
 
-[node name="Music" parent="." index="7" unique_id=340677985]
+[node name="Music" parent="." index="9" unique_id=340677985]
 stream = ExtResource("2_ngxy3")

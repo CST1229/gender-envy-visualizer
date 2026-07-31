@@ -3,6 +3,9 @@ extends Resource
 
 static var list: Array[LogEntry] = [];
 static var altpit: Array[LogEntry] = [];
+static var combined_list: Array[LogEntry]:
+	get:
+		return list + altpit;
 
 var raw_line := "";
 

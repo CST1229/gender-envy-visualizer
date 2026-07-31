@@ -12,7 +12,7 @@ dest_files=["res://.godot/imported/dark_castle.mp3-7f6e1b3bf33e194d32b2fdf876f41
 
 [params]
 
-loop=false
+loop=true
 loop_offset=0
 bpm=0
 beat_count=0

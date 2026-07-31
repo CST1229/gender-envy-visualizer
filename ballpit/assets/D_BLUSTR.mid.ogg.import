@@ -12,7 +12,7 @@ dest_files=["res://.godot/imported/D_BLUSTR.mid.ogg-3a8aa981a6e3dc538af884b886fc
 
 [params]
 
-loop=false
+loop=true
 loop_offset=0
 bpm=0
 beat_count=0

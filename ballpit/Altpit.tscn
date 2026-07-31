@@ -21,5 +21,8 @@ text = "The Altpit"
 [node name="EntryCount" parent="GUI/PersonName" index="0" unique_id=1137725476]
 text = "(Unsorted! %d entries currently!)"
 
-[node name="Music" parent="." index="7" unique_id=340677985]
+[node name="Warning" parent="." index="8" unique_id=1935625580]
+visible = false
+
+[node name="Music" parent="." index="9" unique_id=340677985]
 stream = ExtResource("2_7yksc")

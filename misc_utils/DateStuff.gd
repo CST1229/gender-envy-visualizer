@@ -68,6 +68,8 @@ func _ready() -> void:
 		return weekdays[a] > weekdays[b];
 	);
 	for wd in days_of_week_actual:
+		if wd not in weekdays:
+			weekdays[wd] = 0;
 		print("%s: %s" % [wd, weekdays[wd]]);
 	
 	print("-----");

@@ -3,7 +3,7 @@
 [ext_resource type="PackedScene" uid="uid://dm2mrkuccb4v6" path="res://ballpit/Ballpit.tscn" id="1_2pub5"]
 [ext_resource type="PackedScene" uid="uid://dlwwjyuatd4lx" path="res://ballpit/objects/PFPBall.tscn" id="2_w13po"]
 [ext_resource type="Script" uid="uid://col7s4d70biiw" path="res://ballpit/objects/EditorOnly.gd" id="3_qyej7"]
-[ext_resource type="AudioStream" uid="uid://dnvwgku6vnaqb" path="res://ballpit/assets/dark_castle.mp3" id="4_xpc2h"]
+[ext_resource type="AudioStream" uid="uid://87yo3rncveud" path="res://ballpit/assets/supertux_underwater.ogg" id="4_2pub5"]
 
 [node name="Ballpit" unique_id=1987057312 instance=ExtResource("1_2pub5")]
 BPM = 355.0
@@ -83,4 +83,4 @@ polygon = PackedVector2Array(-192, -448, -256, -448, -256, 256, 256, 256, 256, -
 visible = false
 
 [node name="Music" parent="." index="9" unique_id=340677985]
-stream = ExtResource("4_xpc2h")
+stream = ExtResource("4_2pub5")

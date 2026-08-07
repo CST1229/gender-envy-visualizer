@@ -6,7 +6,6 @@
 [ext_resource type="Script" uid="uid://col7s4d70biiw" path="res://ballpit/objects/EditorOnly.gd" id="3_bam5y"]
 
 [node name="Ballpit" unique_id=1987057312 instance=ExtResource("1_aen8v")]
-mute = true
 BPM = 355.0
 ball_drop_frame_wait = 0
 ball_drop_beat_wait = 0.125

@@ -6,9 +6,21 @@ extends RigidBody2D
 		bg_hidden = value;
 		if background:
 			background.visible = !bg_hidden;
+@export var texture: Texture2D = null:
+	set(value):
+		texture = value;
+		if pfp:
+			pfp.texture = value;
+@export var grow_when_glowing := true;
 # metadata not used by the node itself
 @export var index := 0;
 @export var entry: LogEntry;
+
+@export var being_dragged := false:
+	set(value):
+		being_dragged = value;
+		mass = 10.0 if being_dragged else 1.0;
+		gravity_scale = 0.0 if being_dragged else 1.0;
 
 @onready var clipping_mask: MeshInstance2D = $ClippingMask;
 @onready var pfp: TextureRect = $ClippingMask/PFP;
@@ -19,7 +31,7 @@ func _physics_process(delta: float) -> void:
 	clipping_mask.rotation = -rotation;
 	
 	var target_size := 1.0;
-	if glow.visible:
+	if glow.visible && grow_when_glowing:
 		target_size = 1.4;
 	var weight := 1.0 - exp(-16.0 * delta);
 	clipping_mask.scale = clipping_mask.scale.lerp(

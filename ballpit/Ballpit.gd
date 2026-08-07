@@ -37,6 +37,8 @@ var BEAT: float:
 @onready var clear_ui_timer: Timer = $ClearUITimer;
 @onready var music: AudioStreamPlayer = $Music;
 
+var drag_mode := false;
+
 const BALL_DIAMETER := 64.0;
 const RANDOM_OFFSET_RANGE := 4.0;
 var going_left := false;
@@ -48,18 +50,25 @@ var current_ticks := {};
 var pfp_ball_scene: PackedScene = load("res://ballpit/objects/PFPBall.tscn");
 var balls: Array[PFPBall] = [];
 
+var can_click_balls := false;
 var hovered_ball: PFPBall;
+var clicked_ball: PFPBall;
+var ball_click_offset := Vector2.ZERO;
+var prev_mouse_pos := Vector2.ZERO;
 
 @onready var target_zoom := camera.zoom;
+
+func update_gravity(multiplier := gravity_multiplier) -> void:
+	PhysicsServer2D.area_set_param(
+		get_viewport().find_world_2d().space,
+		PhysicsServer2D.AREA_PARAM_GRAVITY,
+		980.0 * multiplier
+	);
 
 func _ready() -> void:
 	list = LogEntry[list_id];
 	
-	PhysicsServer2D.area_set_param(
-		get_viewport().find_world_2d().space,
-		PhysicsServer2D.AREA_PARAM_GRAVITY,
-		980.0 * gravity_multiplier
-	);
+	update_gravity();
 	
 	var ball_count := 0;
 	for entry in list:
@@ -105,7 +114,7 @@ func _ready() -> void:
 		balls.append(ball);
 		
 		var texture := ImageTexture.create_from_image(entry.image);
-		ball.pfp.texture = texture;
+		ball.texture = texture;
 		ball.entry = entry;
 		ball.z_index = i;
 		ball.index = i;
@@ -183,9 +192,10 @@ func do_glows() -> void:
 		get_tree().quit();
 		return;
 	
+	can_click_balls = true;
 	clear_ui_timer.timeout.connect(func() -> void:
 		for other_ball in balls:
-			if other_ball.glow.visible:
+			if other_ball.glow.visible && other_ball.entry:
 				return;
 		date.text = "";
 		index.text = "";
@@ -194,30 +204,40 @@ func do_glows() -> void:
 		is_friend.visible = false;
 	);
 	for ball in balls:
-		ball.input_pickable = true;
-		ball.mouse_entered.connect(func() -> void:
+		make_ball_clickable(ball);
+
+func make_ball_clickable(ball: PFPBall) -> void:
+	ball.input_pickable = true;
+	ball.mouse_entered.connect(func() -> void:
+		hovered_ball = ball;
+		if !clicked_ball || !drag_mode:
 			highlight_ball(ball);
-			url.text = ball.entry.url;
-			hovered_ball = ball;
-		);
-		ball.mouse_exited.connect(func() -> void:
-			ball.glow.visible = false;
-			ball.z_index = balls.size() + ball.index;
-			
+			if ball.entry:
+				url.text = ball.entry.url;
+	);
+	ball.mouse_exited.connect(func() -> void:
+		if drag_mode && clicked_ball:
 			if hovered_ball == ball:
 				hovered_ball = null;
-			
+			return;
+		ball.glow.visible = false;
+		ball.z_index = balls.size() + ball.index;
+		
+		if hovered_ball == ball:
+			hovered_ball = null;
 			clear_ui_timer.start();
-		);
+	);
 
 func highlight_ball(ball: PFPBall) -> void:
-	person_name.text = ball.entry.nickname;
-	is_friend.visible = ball.entry.is_friend;
-	if ball.entry.date == "?":
-		date.text = ball.entry.username;
-	else:
-		date.text = ball.entry.date + " - " + ball.entry.username;
-	index.text = str("#", ball.index + 1);
+	ball.grow_when_glowing = !drag_mode;
+	if ball.entry:
+		person_name.text = ball.entry.nickname;
+		is_friend.visible = ball.entry.is_friend;
+		if ball.entry.date == "?":
+			date.text = ball.entry.username;
+		else:
+			date.text = ball.entry.date + " - " + ball.entry.username;
+		index.text = str("#", ball.index + 1);
 	
 	ball.glow.visible = true;
 	ball.z_index = 4096;
@@ -225,16 +245,65 @@ func highlight_ball(ball: PFPBall) -> void:
 func _input(_event: InputEvent) -> void:
 	if _event is InputEventMouseButton:
 		var event := _event as InputEventMouseButton;
-		if event.pressed && event.button_index == MouseButton.MOUSE_BUTTON_LEFT:
-			if hovered_ball && hovered_ball.entry.url:
-				OS.shell_open(hovered_ball.entry.url);
-	elif _event is InputEventKey && !_event.is_echo() && _event.is_pressed() && (
-			_event as InputEventKey
-		).keycode == KEY_F10:
+		if event.button_index == MouseButton.MOUSE_BUTTON_LEFT:
+			if event.pressed && hovered_ball && can_click_balls:
+				clicked_ball = hovered_ball;
+				if !drag_mode:
+					if hovered_ball.entry.url:
+						OS.shell_open(hovered_ball.entry.url);
+				else:
+					clicked_ball.angular_velocity = 0;
+					clicked_ball.being_dragged = true;
+				ball_click_offset = clicked_ball.global_position - get_global_mouse_position();
+			elif !event.pressed:
+				unclick_balls();
+	elif _event is InputEventKey && !_event.is_echo() && _event.is_pressed():
+		var event := _event as InputEventKey;
+		if event.keycode == KEY_F10:
 			music.volume_linear = 0.0 if music.volume_linear > 0 else 1.0;
+		elif event.keycode == KEY_D && can_click_balls:
+			drag_mode = !drag_mode;
+			if drag_mode:
+				update_gravity(3.0);
+			else:
+				update_gravity();
+			unclick_balls();
+		elif event.keycode == KEY_C && can_click_balls:
+			var ball: PFPBall = pfp_ball_scene.instantiate();
+			ball.position = get_global_mouse_position();
+			
+			ball.linear_velocity.y += ball_speed * 60;
+			add_child(ball);
+			balls.append(ball);
+			
+			var texture: Texture2D = load("res://ballpit/assets/CST1229.png");
+			ball.texture = texture;
+			make_ball_clickable(ball);
+
+func unclick_balls() -> void:
+	if clicked_ball:
+		clicked_ball.being_dragged = false;
+		if hovered_ball != clicked_ball:
+			clicked_ball.glow.visible = false;
+			clicked_ball.z_index = balls.size() + clicked_ball.index;
+			clear_ui_timer.start();
+		clicked_ball = null;
 
 func _physics_process(delta: float) -> void:
-	var weight := 1.0 - exp(-1.0 * delta);
-	camera.zoom = camera.zoom.lerp(target_zoom, weight);
+	var cam_weight := 1.0 - exp(-1.0 * delta);
+	camera.zoom = camera.zoom.lerp(target_zoom, cam_weight);
+	
+	if drag_mode && clicked_ball:
+		var mouse_pos := get_global_mouse_position();
+		var offset := ((mouse_pos + ball_click_offset) - clicked_ball.global_position);
+		clicked_ball.apply_central_force(offset * offset.abs() * 50);
+		
+		var drag_weight := 1.0 - exp(-1.0 * delta);
+		var damping := -clicked_ball.linear_velocity.lerp(
+			Vector2.ZERO, drag_weight
+		);
+		clicked_ball.apply_central_force(damping * 100);
+	prev_mouse_pos = get_global_mouse_position();
+	
 	#index.text = str(Engine.get_frames_per_second());
 	#index.visible = true;

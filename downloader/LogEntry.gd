@@ -34,7 +34,8 @@ var nickname: String:
 		if alt_name:
 			return alt_name;
 		return platform_handle \
-			.trim_prefix("dsc@").trim_suffix(".bsky.social");
+			.trim_prefix("dsc@").trim_prefix("gd@") \
+				.trim_suffix(".bsky.social");
 
 var url := "";
 
@@ -86,3 +87,6 @@ func parse_username_for_downloaders(downloaders: Array[Downloader]) -> void:
 			platform_downloader = downloader;
 			url = downloader.get_url_for_handle(platform_handle);
 			break;
+
+func should_hide_bg() -> bool:
+	return platform_handle.begins_with("gd@");

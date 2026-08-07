@@ -92,7 +92,7 @@ func _ready() -> void:
 	for entry in list:
 		if !entry.image:
 			continue;
-		var ball := pfp_ball_scene.instantiate();
+		var ball: PFPBall = pfp_ball_scene.instantiate();
 		ball.position = cursor.position;
 		if going_left:
 			ball.position.x += BALL_DIAMETER / 8.0;
@@ -109,6 +109,7 @@ func _ready() -> void:
 		ball.entry = entry;
 		ball.z_index = i;
 		ball.index = i;
+		ball.bg_hidden = entry.should_hide_bg();
 		
 		if !going_left && cursor.position.x >= end_pos.position.x:
 			going_left = true;

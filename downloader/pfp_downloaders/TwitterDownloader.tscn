@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://brqmofgqfvxpl"]
 
-[ext_resource type="Script" uid="uid://d1snaom7pphr2" path="res://pfp_downloaders/TwitterDownloader.gd" id="1_mir2x"]
+[ext_resource type="Script" uid="uid://d1snaom7pphr2" path="res://downloader/pfp_downloaders/TwitterDownloader.gd" id="1_mir2x"]
 
 [node name="TwitterDownloader" type="Node" unique_id=137232959]
 script = ExtResource("1_mir2x")

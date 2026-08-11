@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://6g1ssx5juacq"]
 
-[ext_resource type="Script" uid="uid://2aemn3gxapc0" path="res://pfp_downloaders/YTDownloader.gd" id="1_f0r14"]
+[ext_resource type="Script" uid="uid://2aemn3gxapc0" path="res://downloader/pfp_downloaders/YTDownloader.gd" id="1_f0r14"]
 
 [node name="YTDownloader" type="Node" unique_id=1241124230]
 script = ExtResource("1_f0r14")

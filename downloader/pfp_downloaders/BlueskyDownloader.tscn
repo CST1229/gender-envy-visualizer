@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://cdd38r46qq2b3"]
 
-[ext_resource type="Script" uid="uid://b7kpfii0ah2a6" path="res://pfp_downloaders/BlueskyDownloader.gd" id="1_xfwn8"]
+[ext_resource type="Script" uid="uid://b7kpfii0ah2a6" path="res://downloader/pfp_downloaders/BlueskyDownloader.gd" id="1_xfwn8"]
 
 [node name="BlueskyDownloader" type="Node" unique_id=137232959]
 script = ExtResource("1_xfwn8")

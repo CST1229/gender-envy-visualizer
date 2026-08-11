@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://c0i8xdxsudfii"]
 
-[ext_resource type="Script" uid="uid://byywadk3o58ui" path="res://pfp_downloaders/GitHubDownloader.gd" id="1_k14ln"]
+[ext_resource type="Script" uid="uid://byywadk3o58ui" path="res://downloader/pfp_downloaders/GitHubDownloader.gd" id="1_k14ln"]
 
 [node name="GitHubDownloader" type="Node" unique_id=137232959]
 script = ExtResource("1_k14ln")

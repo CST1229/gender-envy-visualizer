@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://bv441s32pdt1c"]
 
-[ext_resource type="Script" uid="uid://8malisyhe7nt" path="res://pfp_downloaders/RedditDownloader.gd" id="1_46fel"]
+[ext_resource type="Script" uid="uid://8malisyhe7nt" path="res://downloader/pfp_downloaders/RedditDownloader.gd" id="1_46fel"]
 
 [node name="RedditDownloader" type="Node" unique_id=137232959]
 script = ExtResource("1_46fel")

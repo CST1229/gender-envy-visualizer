@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://dynifdgveh1m6"]
 
-[ext_resource type="Script" uid="uid://djftpvqdhd8ca" path="res://pfp_downloaders/DADownloader.gd" id="1_xujmp"]
+[ext_resource type="Script" uid="uid://djftpvqdhd8ca" path="res://downloader/pfp_downloaders/DADownloader.gd" id="1_xujmp"]
 
 [node name="DADownloader" type="Node" unique_id=137232959]
 script = ExtResource("1_xujmp")

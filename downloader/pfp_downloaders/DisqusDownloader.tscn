@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://4qh33wyi00c2"]
 
-[ext_resource type="Script" uid="uid://yjfqngqnv2m7" path="res://pfp_downloaders/DisqusDownloader.gd" id="1_myin2"]
+[ext_resource type="Script" uid="uid://yjfqngqnv2m7" path="res://downloader/pfp_downloaders/DisqusDownloader.gd" id="1_myin2"]
 
 [node name="DisqusDownloader" type="Node" unique_id=137232959]
 script = ExtResource("1_myin2")

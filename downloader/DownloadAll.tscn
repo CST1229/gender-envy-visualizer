@@ -9,6 +9,7 @@
 [ext_resource type="PackedScene" uid="uid://ddjga7m0r2tld" path="res://pfp_downloaders/TwitterDownloaderIlo.tscn" id="7_erl3e"]
 [ext_resource type="PackedScene" uid="uid://dynifdgveh1m6" path="res://pfp_downloaders/DADownloader.tscn" id="8_b2v1h"]
 [ext_resource type="PackedScene" uid="uid://bc868kxwnxpgb" path="res://pfp_downloaders/OtherDownloader.tscn" id="8_erl3e"]
+[ext_resource type="PackedScene" uid="uid://4qh33wyi00c2" path="res://pfp_downloaders/DisqusDownloader.tscn" id="9_acj4u"]
 
 [node name="DownloadAll" type="Control" unique_id=1982837505]
 layout_mode = 3
@@ -32,6 +33,8 @@ script = ExtResource("1_467wq")
 [node name="TwitterDownloaderIlo" parent="." unique_id=2030405994 instance=ExtResource("7_erl3e")]
 
 [node name="DADownloader" parent="." unique_id=609178525 instance=ExtResource("8_b2v1h")]
+
+[node name="DisqusDownloader" parent="." unique_id=1465133615 instance=ExtResource("9_acj4u")]
 
 [node name="OtherDownloaderDiscord" parent="." unique_id=1505550586 instance=ExtResource("8_erl3e")]
 platform_id = "dsc"

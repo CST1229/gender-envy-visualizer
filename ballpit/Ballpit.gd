@@ -259,7 +259,7 @@ func _input(_event: InputEvent) -> void:
 				unclick_balls();
 	elif _event is InputEventKey && !_event.is_echo() && _event.is_pressed():
 		var event := _event as InputEventKey;
-		if event.keycode == KEY_F10:
+		if event.keycode == KEY_F10 || event.keycode == KEY_M:
 			music.volume_linear = 0.0 if music.volume_linear > 0 else 1.0;
 		elif event.keycode == KEY_D && can_click_balls:
 			drag_mode = !drag_mode;

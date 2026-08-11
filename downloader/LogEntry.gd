@@ -34,7 +34,7 @@ var nickname: String:
 		if alt_name:
 			return alt_name;
 		return platform_handle \
-			.trim_prefix("dsc@").trim_prefix("gd@") \
+			.trim_prefix("dsc@").trim_prefix("dsc@").trim_prefix("ba@") \
 				.trim_suffix(".bsky.social");
 
 var url := "";

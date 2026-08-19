@@ -68,6 +68,9 @@ func update_gravity(multiplier := gravity_multiplier) -> void:
 func _ready() -> void:
 	list = LogEntry[list_id];
 	
+	if Input.is_key_pressed(KEY_M) || Input.is_key_pressed(KEY_F10):
+		music.volume_linear = 0;
+	
 	update_gravity();
 	
 	var ball_count := 0;

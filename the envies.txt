@@ -2,8 +2,7 @@ list of people i got envious of simply for them being trans women:
 key:
 	?[date] = not a major hit, only a small one
 	+[date] = a very major hit
-	![date] = person i know (people without ! are just random people that i have no acquaintance with at all)
-	-[date] = person i slightly less know
+	![date] = person i know to SOME extent (people without ! are just random people that i have no acquaintance with at all)
 	>[date] = coming out moment or similar
 	<[date] = retroactive hit
 	#[date] = you can only guess what this means
@@ -184,7 +183,7 @@ Honorable "constant" undated mentions:
 2026-07-18 03:46 - yt@touloutoumou
 2026-07-18 07:14 - twt@HeartlightQueen
 2026-07-18 16:22 - yt@Savayone
-!-2026-07-18 16:30 - twt@SkyanUltra
+!2026-07-18 16:30 - twt@SkyanUltra
 2026-07-18 17:07 - twt@UltraVaultisrad
 +2026-07-19 18:34 - yt@Glubbable
 +2026-07-19 00:59 - u/Eveee_Cx
@@ -287,3 +286,4 @@ Honorable "constant" undated mentions:
 2026-08-24 03:47 - gh@InvoxiPlayGames
 2026-08-24 06:37 - twt@Ap0LLO_OSC
 2026-08-25 07:00 - yt@richconnergmn
++2026-08-26 04:00 - gh@AlyStyle

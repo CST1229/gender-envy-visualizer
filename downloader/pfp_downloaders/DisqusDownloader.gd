@@ -15,8 +15,8 @@ func _on_redirect_completed(
 	result: int, response_code: int, headers: PackedStringArray, _body: PackedByteArray
 ) -> void:
 	if result != ERR_FILE_CANT_OPEN || response_code != 302:
-		print(error_string(result));
-		print(response_code);
+		Global.print_text(error_string(result));
+		Global.print_text(str(response_code));
 		download_complete.emit(null, "Failed to download PFP.");
 		return;
 	

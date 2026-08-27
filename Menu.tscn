@@ -1,0 +1,161 @@
+[gd_scene format=3 uid="uid://dd60vn0ix3jt1"]
+
+[ext_resource type="Script" uid="uid://dhalr1n77uh3t" path="res://Menu.gd" id="1_uubjt"]
+
+[sub_resource type="Theme" id="Theme_uubjt"]
+Button/font_sizes/font_size = 32
+
+[node name="Menu" type="Control" unique_id=20203457]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = SubResource("Theme_uubjt")
+script = ExtResource("1_uubjt")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="." unique_id=808367388]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 16.0
+offset_top = 16.0
+offset_right = -16.0
+offset_bottom = -24.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 16
+
+[node name="VBoxContainer" type="VBoxContainer" parent="HBoxContainer" unique_id=56544321]
+custom_minimum_size = Vector2(400, 0)
+layout_mode = 2
+theme_override_constants/separation = 16
+
+[node name="Main" type="Button" parent="HBoxContainer/VBoxContainer" unique_id=1190555599]
+layout_mode = 2
+text = "Main Ballpit"
+
+[node name="Altpit" type="Button" parent="HBoxContainer/VBoxContainer" unique_id=518354007]
+layout_mode = 2
+text = "Altpit"
+
+[node name="Combined" type="Button" parent="HBoxContainer/VBoxContainer" unique_id=284646070]
+layout_mode = 2
+text = "Combined Ballpit"
+
+[node name="Download" type="Button" parent="HBoxContainer/VBoxContainer" unique_id=125597546]
+layout_mode = 2
+text = "Download/Load Logs"
+
+[node name="Stats" type="Button" parent="HBoxContainer/VBoxContainer" unique_id=1692876647]
+layout_mode = 2
+text = "Stats"
+
+[node name="Spacer" type="Control" parent="HBoxContainer/VBoxContainer" unique_id=1558362352]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="ListStatus" type="Label" parent="HBoxContainer/VBoxContainer" unique_id=115358932]
+layout_mode = 2
+theme_override_constants/line_spacing = 0
+theme_override_font_sizes/font_size = 24
+text = "Logs not loaded yet.
+Click any of the above buttons, or use Download/Load Logs."
+autowrap_mode = 3
+
+[node name="MuteHints" type="HBoxContainer" parent="HBoxContainer/VBoxContainer" unique_id=129673691]
+layout_mode = 2
+theme_override_constants/separation = 16
+
+[node name="Mute" type="Button" parent="HBoxContainer/VBoxContainer/MuteHints" unique_id=862167818]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Mute"
+
+[node name="Hints" type="Button" parent="HBoxContainer/VBoxContainer/MuteHints" unique_id=1456965863]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Hints"
+
+[node name="ConsoleLog" type="RichTextLabel" parent="HBoxContainer" unique_id=270150201]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_font_sizes/normal_font_size = 24
+text = "Log
+Log
+Log
+Log
+Log
+Log
+Log
+Log
+Log
+Log
+Log
+Log
+Log
+Log
+Log
+Log
+Log
+Log
+Log
+Log
+Log
+Log
+Log
+Log
+Log
+Log
+Log
+Log
+Log
+Log
+Log
+Log
+Log
+Log
+Log
+Log
+Log
+Log
+Log
+Log
+Log
+Log
+Log
+Log
+Log
+Log
+Log
+Log
+Log
+Log
+Log
+Log
+Log
+Log
+Log
+Log
+Log
+Log
+Log
+Log
+Log
+Log
+Log
+Log
+Log
+Log
+Log
+Log
+Log
+Log
+Log
+Log
+Log
+Log
+Log
+"

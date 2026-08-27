@@ -17,19 +17,18 @@ func _ready() -> void:
 		error_msg = res;
 		pfp_image = image;
 		if !image:
-			printerr(
-				platform_id + ": " +
-				res
+			Global.print_err(
+				platform_id + ": " + res
 			);
 		else:
 			pass
 			#if !got_from_cache:
-				#print(
+				#Global.print_text(
 					#"Successfully loaded online PFP for " + platform_id +
 					#" handle " + target_handle + "!"
 				#);
 			#else:
-				#print(
+				#Global.print_text(
 					#"Successfully loaded cached PFP for " + platform_id +
 					#" handle " + target_handle + "!"
 				#);
@@ -73,6 +72,7 @@ func do_fetch() -> void:
 				null, "Who is " + target_handle + "? Put it in " + get_cache_path()
 			);
 		else:
+			started_downloading.emit();
 			_fetch_pfp();
 	await download_done;
 	
@@ -99,5 +99,6 @@ func make_dir() -> void:
 func get_url_for_handle(_handle: String) -> String:
 	return "";
 
+signal started_downloading();
 signal download_complete(image: Image, msg: String);
 signal download_done();

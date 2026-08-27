@@ -19,8 +19,8 @@ func _on_request_completed(
 	var file := FileAccess.open("response.html", FileAccess.WRITE);
 	file.store_buffer(body);
 	if result != OK or response_code != 200:
-		print("ua: ", headers[0]);
-		print("url: ", "https://www.reddit.com/user/" + target_handle + "/about.json");
+		Global.print_text("ua: " + str(headers[0]));
+		Global.print_text("url: " + "https://www.reddit.com/user/" + target_handle + "/about.json");
 		download_complete.emit(null, "Reddit request failed. Code: " + str(response_code));
 		return;
 	var json = JSON.parse_string(body.get_string_from_utf8());

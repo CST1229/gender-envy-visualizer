@@ -229,7 +229,7 @@ Honorable "constant" undated mentions:
 2026-08-03 02:47 - twt@KinetikLite
 2026-08-05 08:12 - yt@Wyref
 2026-08-05 08:31 - twt@sophie_tunes
-// 2026-08-05 09:25 - Maddy Thorson
+// 2026-08-05 09:25 - Maddy Thorson # TODO: find a suitable pfp
 2026-08-06 02:46 - twt@shostelthegoat
 +2026-08-06 21:34 - twt@gfxstrand
 2026-08-06 22:28 - scr@AlixTheMighty
@@ -255,7 +255,7 @@ Honorable "constant" undated mentions:
 2026-08-12 16:50 - u/LumpofSilliness
 2026-08-13 02:56 - twt@LilyBlue53
 2026-08-13 15:30 - gh@Rosalie241
-// 2026-08-13 16:21 - Rebecca Heineman
+// 2026-08-13 16:21 - Rebecca Heineman # TODO: find a suitable pfp?
 2026-08-15 02:21 - yt@totalgd
 2026-08-15 04:09 - u/Markiemans09
 2026-08-15 04:27 - yt@Camilleden
@@ -276,8 +276,8 @@ Honorable "constant" undated mentions:
 2026-08-21 08:21 - twt@WhisperMute
 2026-08-22 03:59 - twt@WhisperMute
 2026-08-22 05:36 - dsc@dahlianova2
-// 2026-08-22 06:20 - Lena Raine
-// +2026-08-22 06:31 - Narcissa Wright
+// 2026-08-22 06:20 - Lena Raine # TODO: find a suitable pfp
+// +2026-08-22 06:31 - Narcissa Wright # TODO: find a suitable pfp?
 2026-08-22 07:19 - yt@Pixiuchu
 2026-08-22 15:54 - scr@plasticsyringe
 2026-08-22 16:37 - yt@LilithElainePersonal
@@ -285,5 +285,14 @@ Honorable "constant" undated mentions:
 2026-08-23 15:08 - yt@CCShakeCat
 2026-08-24 03:47 - gh@InvoxiPlayGames
 2026-08-24 06:37 - twt@Ap0LLO_OSC
-2026-08-25 07:00 - yt@richconnergmn
-+2026-08-26 04:00 - gh@AlyStyle
+2026-08-24 07:00 - yt@richconnergmn
++2026-08-25 04:00 - gh@AlyStyle
+2026-08-25 18:46 - yt@CCShakeCat
+// 2026-08-25 18:46 - Maddy Thorson # TODO: find a suitable pfp
+2026-08-25 18:50 - yt@mintietea
+2026-08-26 07:44 - bsk@bowblax.bsky.social
+2026-08-26 09:38 - twt@rmg_rich
+2026-08-26 15:45 - u/CitizenCivilization
+2026-08-26 15:53 - u/Pyro_The_Engineer
+2026-08-26 21:31 - gh@KenzieMac130
+2026-08-27 09:18 - twt@Nyaalexi

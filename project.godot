@@ -11,7 +11,7 @@ config_version=5
 [application]
 
 config/name="gender envy visualizer"
-run/main_scene="uid://c3fwkevjfphk0"
+run/main_scene="uid://dd60vn0ix3jt1"
 config/features=PackedStringArray("4.7")
 boot_splash/show_image=false
 config/icon="res://icon.svg"

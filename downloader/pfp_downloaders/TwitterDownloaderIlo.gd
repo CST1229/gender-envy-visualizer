@@ -24,7 +24,7 @@ func _on_request_completed(
 		http_request.request_completed.connect(_on_image_completed, ConnectFlags.CONNECT_ONE_SHOT);
 		http_request.request(pfp_url);
 	else:
-		print(body.get_string_from_utf8());
+		Global.print_text(body.get_string_from_utf8());
 		download_complete.emit(null, "Could not extract API response.");
 
 func _on_image_completed(

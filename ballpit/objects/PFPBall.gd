@@ -38,3 +38,6 @@ func _physics_process(delta: float) -> void:
 		Vector2.ONE * target_size, weight
 	);
 	glow.scale = clipping_mask.scale * 0.7;
+	if position.y > 2500:
+		visible = false;
+		process_mode = Node.PROCESS_MODE_DISABLED;

@@ -7,8 +7,8 @@ const TOTAL = "Total entries";
 var list := LogEntry.list;
 
 func _ready() -> void:
-	print("-----");
-	print("Number of times each platform appears in the list:");
+	Global.print_text("-----");
+	Global.print_text("Number of times each platform appears in the list:");
 	
 	times[TOTAL] = 0;
 	majors[TOTAL] = 0;
@@ -29,19 +29,19 @@ func _ready() -> void:
 		return times[a] > times[b];
 	);
 	for id in times_arr:
-		print("%s: %s (%.2f%%)" % [
+		Global.print_text("%s: %s (%.2f%%)" % [
 			id, times[id], times[id] / float(times[TOTAL]) * 100.0
 		]);
 	
-	print("-----");
-	print("Percentage of major hits per platform, relative to platform hit count:");
+	Global.print_text("-----");
+	Global.print_text("Percentage of major hits per platform, relative to platform hit count:");
 	
 	var majors_arr := times.keys();
 	majors_arr.sort_custom(func(a, b) -> bool:
 		return (majors[a] / float(times[a])) > (majors[b] / float(times[b]));
 	);
 	for id in majors_arr:
-		print("%s: %.2f%% (%s hits)" % [
+		Global.print_text("%s: %.2f%% (%s hits)" % [
 			id, majors[id] / float(times[id]) * 100.0, majors[id]
 		]);
 	

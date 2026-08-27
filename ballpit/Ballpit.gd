@@ -69,7 +69,13 @@ func _ready() -> void:
 	list = LogEntry[list_id];
 	
 	if Input.is_key_pressed(KEY_M) || Input.is_key_pressed(KEY_F10):
+		Global.mute = !Global.mute;
+	
+	if Global.mute:
 		music.volume_linear = 0;
+	Global.mute_changed.connect(func() -> void:
+		music.volume_linear = 0.0 if Global.mute else 1.0;
+	);
 	
 	update_gravity();
 	
@@ -157,6 +163,8 @@ func wait_beats(beats: float, thread: String = ""):
 		current_ticks[thread] += beat_ticks;
 	
 	while Engine.get_physics_frames() < current_ticks[thread]:
+		if !is_inside_tree():
+			return;
 		await get_tree().physics_frame;
 
 func do_glows() -> void:
@@ -198,7 +206,7 @@ func do_glows() -> void:
 	can_click_balls = true;
 	clear_ui_timer.timeout.connect(func() -> void:
 		for other_ball in balls:
-			if other_ball.glow.visible && other_ball.entry:
+			if !other_ball || other_ball.glow.visible && other_ball.entry:
 				return;
 		date.text = "";
 		index.text = "";
@@ -252,7 +260,7 @@ func _input(_event: InputEvent) -> void:
 			if event.pressed && hovered_ball && can_click_balls:
 				clicked_ball = hovered_ball;
 				if !drag_mode:
-					if hovered_ball.entry.url:
+					if hovered_ball.entry && hovered_ball.entry.url:
 						OS.shell_open(hovered_ball.entry.url);
 				else:
 					clicked_ball.angular_velocity = 0;
@@ -262,9 +270,7 @@ func _input(_event: InputEvent) -> void:
 				unclick_balls();
 	elif _event is InputEventKey && !_event.is_echo() && _event.is_pressed():
 		var event := _event as InputEventKey;
-		if event.keycode == KEY_F10 || event.keycode == KEY_M:
-			music.volume_linear = 0.0 if music.volume_linear > 0 else 1.0;
-		elif event.keycode == KEY_D && can_click_balls:
+		if event.keycode == KEY_D && can_click_balls:
 			drag_mode = !drag_mode;
 			if drag_mode:
 				update_gravity(3.0);

@@ -52,17 +52,17 @@ func _ready() -> void:
 		if !is_unknown_date:
 			entry.set_meta(&"unix_time", Time.get_unix_time_from_datetime_dict(date_dict));
 	
-	print("-----");
-	print("Number of hits per day:");
+	Global.print_text("-----");
+	Global.print_text("Number of hits per day:");
 	var times_arr := times.keys();
 	#times_arr.sort_custom(func(a, b) -> bool:
 		#return times[a] > times[b];
 	#);
 	for date in times_arr:
-		print("%s: %s" % [date, times[date]]);
+		Global.print_text("%s: %s" % [date, times[date]]);
 	
-	print("-----");
-	print("Number of hits per day of week:");
+	Global.print_text("-----");
+	Global.print_text("Number of hits per day of week:");
 	var weekdays_arr := weekdays.keys();
 	weekdays_arr.sort_custom(func(a, b) -> bool:
 		return weekdays[a] > weekdays[b];
@@ -70,10 +70,10 @@ func _ready() -> void:
 	for wd in days_of_week_actual:
 		if wd not in weekdays:
 			weekdays[wd] = 0;
-		print("%s: %s" % [wd, weekdays[wd]]);
+		Global.print_text("%s: %s" % [wd, weekdays[wd]]);
 	
-	print("-----");
-	print("Number of hits per hour of day:");
+	Global.print_text("-----");
+	Global.print_text("Number of hits per hour of day:");
 	for i in range(0, 24):
 		hours[str(i)] = hours.get(str(i), 0);
 	var hours_arr := hours.keys();
@@ -81,10 +81,10 @@ func _ready() -> void:
 		return str(a).naturalnocasecmp_to(b) < 0;
 	);
 	for hour in hours_arr:
-		print("%s: %s" % [hour, hours[hour]]);
+		Global.print_text("%s: %s" % [hour, hours[hour]]);
 	
-	print("-----");
-	print("Biggest gap between hits (except retroactive hits):");
+	Global.print_text("-----");
+	Global.print_text("Biggest gap between hits (except retroactive hits):");
 	
 	var biggestgap_a: LogEntry = null;
 	var biggestgap_b: LogEntry = null;
@@ -107,10 +107,10 @@ func _ready() -> void:
 		prev = entry;
 	
 	if !biggestgap_a:
-		print("None found!!!");
+		Global.print_text("None found!!!");
 	else:
 		var hrs := snappedf(float(biggestgap_time) / 3600.0, 0.01);
-		print("Between %s %s and %s %s - %s hour%s" % [
+		Global.print_text("Between %s %s and %s %s - %s hour%s" % [
 			biggestgap_a.date, biggestgap_a.username,
 			biggestgap_b.date, biggestgap_b.username,
 			hrs,

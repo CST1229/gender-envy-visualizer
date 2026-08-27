@@ -6,8 +6,8 @@ var people_arr: Array[String] = [];
 var list := LogEntry.list;
 
 func _ready() -> void:
-	print("-----");
-	print("Number of times each person appears in the list:");
+	Global.print_text("-----");
+	Global.print_text("Number of times each person appears in the list:");
 	
 	for entry in list:
 		var username := entry.platform_handle;
@@ -22,5 +22,5 @@ func _ready() -> void:
 	
 	for person in people_arr:
 		if people[person] > 1:
-			print("%s: %s" % [person, people[person]]);
-	print("Everyone else: 1");
+			Global.print_text("%s: %s" % [person, people[person]]);
+	Global.print_text("Everyone else: 1");

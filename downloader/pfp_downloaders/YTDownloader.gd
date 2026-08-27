@@ -30,7 +30,7 @@ func _on_page_request_completed(
 		download_complete.emit(
 			null, "failed to fetch youtube page. Response code: " + str(response_code)
 		);
-		print(body.get_string_from_utf8());
+		Global.print_text(body.get_string_from_utf8());
 		return
 		
 	var html := body.get_string_from_utf8();

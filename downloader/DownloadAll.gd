@@ -3,14 +3,23 @@ extends Control
 @export var goto_scene := true;
 
 var downloaders: Array[Downloader] = [];
+@onready var loading_label: Label = $LoadingLabel;
 
 var lines := PackedStringArray();
+
 
 func _ready() -> void:
 	for child in get_children():
 		if child is Downloader:
 			downloaders.append(child);
+			child.started_downloading.connect(func() -> void:
+				if loading_label:
+					loading_label.text = "Downloading missing PFPs...";
+					loading_label = null;
+			);
 			child.make_dir();
+	
+	await get_tree().process_frame;
 	
 	LogEntry.list.clear();
 	LogEntry.altpit.clear();
@@ -19,11 +28,13 @@ func _ready() -> void:
 	populate_entry_list("altpit.txt", LogEntry.altpit, all_entries);
 	await do_downloads(all_entries);
 	
-	print("Done downloading/fetching pfps!");
+	Global.print_text("Done downloading/fetching pfps!");
 	if !goto_scene:
-		print("You can close this now");
-		print("Regular entries: " + str(LogEntry.list.size()));
-		print("Altpit entries: " + str(LogEntry.altpit.size()));
+		Global.print_text("------");
+		Global.print_text("Regular entries: " + str(LogEntry.list.size()));
+		Global.print_text("Altpit entries: " + str(LogEntry.altpit.size()));
+		await get_tree().process_frame;
+		get_tree().quit();
 		return;
 	if !Global.goto_after_download:
 		Global.goto_after_download = load("res://ballpit/Ballpit.tscn");
@@ -57,15 +68,15 @@ func do_downloads(entries: Array[LogEntry]) -> void:
 			if downloader.pfp_image:
 				if downloader.got_from_cache:
 					if log_all:
-						prints("----CACHED:", entry.username);
+						Global.print_text("----CACHED: " + entry.username);
 				else:
-					prints("----FETCHED:", entry.username);
+					Global.print_text("----FETCHED: " + entry.username);
 			else:
 				if downloader.is_manual || downloader.disabled:
 					if log_all:
-						prints("---manual:", entry.username);
+						Global.print_text("---manual: " + entry.username);
 				else:
-					prints("----FAIL:", entry.username);
+					Global.print_text("----FAIL: " + entry.username);
 		entry.image = downloader.pfp_image;
 		if !downloader.is_manual && !downloader.disabled && !downloader.got_from_cache:
 			await get_tree().create_timer(1).timeout;

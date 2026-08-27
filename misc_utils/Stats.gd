@@ -1,9 +1,12 @@
 extends Node2D
 
 func _ready() -> void:
-	print("-----");
-	print("Done collecting stats!");
-	print("%s total entries" % LogEntry.list.size());
+	Global.print_text("-----");
+	Global.print_text("Done collecting stats!");
+	Global.print_text("%s total entries" % LogEntry.list.size());
 	await get_tree().physics_frame;
 	await get_tree().physics_frame;
-	get_tree().quit();
+	if !Global.coming_from_menu:
+		get_tree().quit();
+	else:
+		get_tree().change_scene_to_file("res://Menu.tscn");

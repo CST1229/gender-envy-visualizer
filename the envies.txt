@@ -229,7 +229,7 @@ Honorable "constant" undated mentions:
 2026-08-03 02:47 - twt@KinetikLite
 2026-08-05 08:12 - yt@Wyref
 2026-08-05 08:31 - twt@sophie_tunes
-2026-08-05 09:25 - Maddy Thorson # pfp source: https://en.wikipedia.org/wiki/File:Maddy_Thorson_at_ACMI,_Melbourne_(retouched)_(cropped).jpg, cropped again
+2026-08-05 09:25 - Maddy Thorson
 2026-08-06 02:46 - twt@shostelthegoat
 +2026-08-06 21:34 - twt@gfxstrand
 2026-08-06 22:28 - scr@AlixTheMighty
@@ -255,7 +255,7 @@ Honorable "constant" undated mentions:
 2026-08-12 16:50 - u/LumpofSilliness
 2026-08-13 02:56 - twt@LilyBlue53
 2026-08-13 15:30 - gh@Rosalie241
-2026-08-13 16:21 - Rebecca Heineman # pfp from: gh@burgerbecky
+2026-08-13 16:21 - Rebecca Heineman # platform: gh@burgerbecky
 2026-08-15 02:21 - yt@totalgd
 2026-08-15 04:09 - u/Markiemans09
 2026-08-15 04:27 - yt@Camilleden
@@ -276,8 +276,8 @@ Honorable "constant" undated mentions:
 2026-08-21 08:21 - twt@WhisperMute
 2026-08-22 03:59 - twt@WhisperMute
 2026-08-22 05:36 - dsc@dahlianova2
-2026-08-22 06:20 - Lena Raine # pfp source: https://en.wikipedia.org/wiki/File:Lena_Raine.jpg, cropped again
-+2026-08-22 06:31 - Narcissa Wright # pfp from: yt@narcissawright
+2026-08-22 06:20 - Lena Raine
++2026-08-22 06:31 - Narcissa Wright # platform: yt@narcissawright
 2026-08-22 07:19 - yt@Pixiuchu
 2026-08-22 15:54 - scr@plasticsyringe
 2026-08-22 16:37 - yt@LilithElainePersonal

@@ -1,0 +1,5 @@
+Florence Chappell: https://battlefordreamisland.fandom.com/wiki/File:Florence_Chappell_.jpg
+Maddy Thorson: https://en.wikipedia.org/wiki/File:Maddy_Thorson_at_ACMI,_Melbourne_(retouched)_(cropped).jpg, cropped again
+Lena Raine: https://en.wikipedia.org/wiki/File:Lena_Raine.jpg, cropped
+
+(see also: `# platform:` declarations in `the envies.txt`)

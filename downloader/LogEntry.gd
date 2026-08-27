@@ -33,7 +33,7 @@ var platform_handle := "";
 var platform_downloader: Downloader;
 
 # Where to download the PFP from.
-# If "platform@username # pfp from: platform2@username2" is put in an entry,
+# If "platform@username # platform: platform2@username2" is put in an entry,
 # the PFP is downloaded from platform2@username2 but
 # placed where platform@username's PFP would be.
 # Useful for e.g grabbing `other` platform images from different platforms,
@@ -105,7 +105,7 @@ func parse_username_for_downloaders(downloaders: Array[Downloader]) -> void:
 	pfp_platform_id = platform_id;
 	pfp_platform_downloader = platform_downloader;
 	
-	const PFP_FROM_SUFFIX = "pfp from:"
+	const PFP_FROM_SUFFIX = "platform:"
 	
 	if !comment.begins_with(PFP_FROM_SUFFIX):
 		return;

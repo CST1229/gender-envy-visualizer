@@ -11,7 +11,6 @@ extends Control
 
 @onready var console_log: RichTextLabel = $HBoxContainer/ConsoleLog;
 
-# Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	update_console();
 	
@@ -44,6 +43,7 @@ func _ready() -> void:
 		p("F11: toggle fullscreen");
 		p("M or F10: toggle mute");
 		p("TAB: skip waits (WARNING: if done while balls drop, things will break!)");
+		p("Right Arrow: fastforward (may still cause minor instability)");
 		p("-- After camera zooms back out:");
 		p("Mouse: hover over balls, click to open URL (if a ball has one)");
 		p("D: toggle drag mode (use mouse)");

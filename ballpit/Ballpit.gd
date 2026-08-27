@@ -142,7 +142,7 @@ func _ready() -> void:
 		if ball_drop_beat_wait > 0:
 			await wait_beats(ball_drop_beat_wait, "ball_drop");
 		else:
-			for _wait in ball_drop_frame_wait:
+			for _wait in ball_drop_frame_wait / Engine.time_scale:
 				await get_tree().physics_frame;
 		i += 1;
 
@@ -156,7 +156,7 @@ func wait_beats(beats: float, thread: String = ""):
 	
 	# complicated sync stuff
 	var tick := Engine.get_physics_frames();
-	var beat_ticks := (BEAT * beats) * Engine.physics_ticks_per_second;
+	var beat_ticks := (BEAT * beats) * Global.base_tickrate;
 	if thread not in current_ticks:
 		current_ticks[thread] = float(tick) + beat_ticks;
 	else:

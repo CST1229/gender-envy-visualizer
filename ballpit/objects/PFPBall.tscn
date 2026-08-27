@@ -45,4 +45,4 @@ offset_bottom = 32.0
 pivot_offset_ratio = Vector2(0.5, 0.5)
 texture = ExtResource("3_o70kh")
 expand_mode = 1
-stretch_mode = 4
+stretch_mode = 6

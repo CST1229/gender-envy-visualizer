@@ -60,8 +60,11 @@ func do_downloads(entries: Array[LogEntry]) -> void:
 	var log_all := false;
 	
 	for entry in entries:
-		var downloader := entry.platform_downloader;
-		downloader.target_handle = entry.platform_handle;
+		var downloader := entry.pfp_platform_downloader;
+		downloader.target_handle = entry.pfp_platform_handle;
+		downloader.download_to = entry.platform_downloader.get_cache_path(
+			entry.platform_handle
+		);
 		
 		await downloader.do_fetch();
 		if do_logs:

@@ -88,3 +88,6 @@ func _input(ev: InputEvent) -> void:
 		if keycode == KEY_F6:
 			Global.console_log = "";
 			update_console();
+		elif keycode == KEY_C:
+			if (ev as InputEventKey).ctrl_pressed:
+				DisplayServer.clipboard_set(Global.console_log);

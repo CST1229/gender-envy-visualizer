@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" uid="uid://bni0pgokvl73d" path="res://ballpit/objects/PFPBall.gd" id="1_jehy6"]
 [ext_resource type="Texture2D" uid="uid://ddksiimvu04mu" path="res://ballpit/assets/Radial2D.svg" id="2_4n67j"]
-[ext_resource type="Texture2D" uid="uid://rkop4pkcfhkq" path="res://icon.svg" id="3_o70kh"]
+[ext_resource type="Texture2D" uid="uid://rkop4pkcfhkq" path="res://ballpit/assets/godot_icon.svg" id="3_o70kh"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_cq4uw"]
 radius = 32.0

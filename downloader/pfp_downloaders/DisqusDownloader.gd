@@ -3,7 +3,6 @@ extends Downloader
 @onready var http_request: HTTPRequest = $HTTPRequest;
 
 func _ready() -> void:
-	_fetch_pfp();
 	super();
 
 func _fetch_pfp() -> void:

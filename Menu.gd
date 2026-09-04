@@ -37,13 +37,17 @@ func _ready() -> void:
 		get_tree().change_scene_to_file("res://misc_utils/Stats.tscn");
 	);
 	hints.pressed.connect(func() -> void:
-		p("----- Ballpit keybinds:");
+		p("----- Global keybinds:");
 		p("ESC: return to menu");
 		p("F2: take hi-res screenshot, stored in media/hires_screenshot.png");
 		p("F11: toggle fullscreen");
 		p("M or F10: toggle mute");
-		p("TAB: skip waits (WARNING: if done while balls drop, things will break!)");
-		p("Right Arrow: fastforward (may still cause minor instability)");
+		p("----- Keybinds on this menu:");
+		p("F6: clear logs");
+		p("Ctrl+C: copy logs");
+		p("----- Ballpit keybinds:");
+		p("TAB: skip ball highlights");
+		p("Right Arrow: fastforward (may cause minor instability)");
 		p("-- After camera zooms back out:");
 		p("Mouse: hover over balls, click to open URL (if a ball has one)");
 		p("D: toggle drag mode (use mouse)");

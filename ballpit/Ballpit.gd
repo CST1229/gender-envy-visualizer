@@ -139,15 +139,16 @@ func _ready() -> void:
 			else:
 				cursor.position.x -= BALL_DIAMETER;
 		
+		ball_added.emit(ball);
 		if ball_drop_beat_wait > 0:
-			await wait_beats(ball_drop_beat_wait, "ball_drop");
+			await wait_beats(ball_drop_beat_wait, "ball_drop", true);
 		else:
 			for _wait in ball_drop_frame_wait / Engine.time_scale:
 				await get_tree().physics_frame;
 		i += 1;
 
-func wait_beats(beats: float, thread: String = ""):
-	if Input.is_key_pressed(KEY_TAB) || beats <= 0:
+func wait_beats(beats: float, thread: String = "", unskippable := false):
+	if (!unskippable && Input.is_key_pressed(KEY_TAB)) || beats <= 0:
 		return null;
 	
 	if thread == "":
@@ -170,7 +171,7 @@ func wait_beats(beats: float, thread: String = ""):
 func do_glows() -> void:
 	camera.zoom = Vector2.ONE;
 	target_zoom = Vector2.ONE * show_all_zoom;
-	await wait_beats(start_glows_beats, "glows");
+	await wait_beats(start_glows_beats, "glows", true);
 	target_zoom = Vector2.ONE * show_ball_zoom;
 	entry_count.text = "";
 	
@@ -214,8 +215,12 @@ func do_glows() -> void:
 		url.text = "";
 		is_friend.visible = false;
 	);
+	
 	for ball in balls:
 		make_ball_clickable(ball);
+	ball_added.connect(func(ball: PFPBall) -> void:
+		make_ball_clickable(ball);
+	);
 
 func make_ball_clickable(ball: PFPBall) -> void:
 	ball.input_pickable = true;
@@ -316,3 +321,5 @@ func _physics_process(delta: float) -> void:
 	
 	#index.text = str(Engine.get_frames_per_second());
 	#index.visible = true;
+
+signal ball_added(ball: PFPBall);

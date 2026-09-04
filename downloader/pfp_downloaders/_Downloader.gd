@@ -45,14 +45,19 @@ func do_fetch() -> void:
 	var cache_path := get_cache_path() if download_to == "" else download_to;
 	var cache_path_jpeg := cache_path.get_basename() + ".jpeg";
 	make_dir();
-	if fetch_pfp_from_cache(cache_path, "load_png_from_buffer"):
+	if fetch_pfp_from_cache(cache_path):
 		pass
-	elif fetch_pfp_from_cache(cache_path_jpeg, "load_jpg_from_buffer"):
+	elif fetch_pfp_from_cache(cache_path_jpeg):
 		pass
 	else:
 		if disabled:
 			download_complete.emit(
 				null, "Who is " + target_handle + "? Put it in " + get_cache_path()
+			);
+		elif !OS.has_feature("editor") || OS.has_feature("web"):
+			started_downloading.emit();
+			download_complete.emit(
+				null, "Can't download PFPs in exported builds"
 			);
 		else:
 			started_downloading.emit();
@@ -63,8 +68,8 @@ func do_fetch() -> void:
 		LogEntry.pfp_cache[cache_path] = pfp_image;
 		pfp_image.save_png(cache_path);
 
-func fetch_pfp_from_cache(cache_path: String, method_name: String) -> bool:
-	if !FileAccess.file_exists(cache_path):
+func fetch_pfp_from_cache(cache_path: String) -> bool:
+	if !FileAccess.file_exists(cache_path) && !FileAccess.file_exists(cache_path + ".import"):
 		return false;
 	if cache_path in LogEntry.pfp_cache:
 		error_msg = "";
@@ -72,16 +77,17 @@ func fetch_pfp_from_cache(cache_path: String, method_name: String) -> bool:
 		got_from_cache = true;
 		download_complete.emit(pfp_image, error_msg);
 		return true;
-	error_msg = "";
-	pfp_image = Image.new();
-	got_from_cache = true;
-	var error: Error = pfp_image.call(
-		method_name,
-		FileAccess.get_file_as_bytes(cache_path)
-	);
-	if error != OK:
+	
+	var texture: Texture2D = load(cache_path);
+	if !texture:
 		pfp_image = null;
-		error_msg = "Failed to load cached PFP image: " + error_string(error);
+		error_msg = "Failed to load() cached PFP image: " + cache_path;
+		download_complete.emit(pfp_image, error_msg);
+		return true;
+	
+	error_msg = "";
+	pfp_image = texture.get_image();
+	got_from_cache = true;
 	download_complete.emit(pfp_image, error_msg);
 	return true;
 

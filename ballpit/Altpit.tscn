@@ -6,7 +6,7 @@
 [node name="Ballpit" unique_id=1987057312 instance=ExtResource("1_t4qno")]
 BPM = 180.0
 ball_drop_frame_wait = 0
-ball_drop_beat_wait = 2.0
+ball_drop_beat_wait = 0.5
 ball_speed = 32.0
 ball_beats = 4.0
 list_id = "altpit"

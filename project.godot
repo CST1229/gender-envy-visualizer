@@ -13,8 +13,9 @@ config_version=5
 config/name="gender envy visualizer"
 run/main_scene="uid://dd60vn0ix3jt1"
 config/features=PackedStringArray("4.7")
+boot_splash/bg_color=Color(0.095405765, 0.10056747, 0.4552511, 1)
 boot_splash/show_image=false
-config/icon="res://icon.svg"
+config/icon="uid://doo7cv7rg2mg8"
 
 [autoload]
 
@@ -43,6 +44,7 @@ common/physics_ticks_per_second=180
 common/physics_jitter_fix=0.0
 2d/physics_engine="Rapier2D"
 2d/default_gravity=1960.0
+common/physics_interpolation=true
 rapier/solver/preset=1
 rapier/solver/num_internal_pgs_iterations=4
 rapier/solver/num_internal_stabilization_iterations=4

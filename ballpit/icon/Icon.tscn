@@ -1,0 +1,151 @@
+[gd_scene format=3 uid="uid://bfhtdid1c8k0m"]
+
+[ext_resource type="Script" uid="uid://6ejtr3xuidmv" path="res://ballpit/icon/ScreenshotTheIcon.gd" id="1_rp2p4"]
+[ext_resource type="Script" uid="uid://box7vch4d13pi" path="res://ballpit/objects/AttachedPolygon2D.gd" id="1_xr3bc"]
+[ext_resource type="PackedScene" uid="uid://dlwwjyuatd4lx" path="res://ballpit/objects/PFPBall.tscn" id="2_cnh6e"]
+[ext_resource type="Texture2D" uid="uid://dxogxo0ce4103" path="res://ballpit/icon/blue.svg" id="3_66mcw"]
+[ext_resource type="Texture2D" uid="uid://bspjopegcm3uc" path="res://ballpit/icon/white.svg" id="3_cnh6e"]
+[ext_resource type="Texture2D" uid="uid://d1jhhxgb2plmd" path="res://ballpit/icon/pink.svg" id="4_rp2p4"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_cq4uw"]
+corner_radius_top_left = 128
+corner_radius_top_right = 128
+corner_radius_bottom_right = 128
+corner_radius_bottom_left = 128
+corner_detail = 20
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_ksg4y"]
+blend_mode = 1
+
+[sub_resource type="Gradient" id="Gradient_lxbrw"]
+colors = PackedColorArray(0, 0, 0, 0, 1, 1, 1, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_3umuw"]
+gradient = SubResource("Gradient_lxbrw")
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_2c6oc"]
+blend_mode = 2
+
+[node name="Control" type="Control" unique_id=1414731290]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="ColorRect" type="ColorRect" parent="." unique_id=1682454197]
+layout_mode = 0
+offset_left = -16.0
+offset_top = -16.0
+offset_right = 656.0
+offset_bottom = 656.0
+
+[node name="SubViewportContainer" type="SubViewportContainer" parent="." unique_id=1523189582]
+layout_mode = 0
+offset_right = 640.0
+offset_bottom = 640.0
+stretch = true
+
+[node name="SubViewport" type="SubViewport" parent="SubViewportContainer" unique_id=258222491]
+transparent_bg = true
+handle_input_locally = false
+msaa_2d = 2
+size = Vector2i(640, 640)
+render_target_update_mode = 4
+script = ExtResource("1_rp2p4")
+
+[node name="Icon" type="Panel" parent="SubViewportContainer/SubViewport" unique_id=1963403745]
+clip_children = 1
+offset_right = 640.0
+offset_bottom = 640.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_cq4uw")
+
+[node name="SubViewportContainer" type="SubViewportContainer" parent="SubViewportContainer/SubViewport/Icon" unique_id=660975293]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+stretch = true
+
+[node name="SubViewport" type="SubViewport" parent="SubViewportContainer/SubViewport/Icon/SubViewportContainer" unique_id=1714265440]
+handle_input_locally = false
+msaa_2d = 3
+size = Vector2i(640, 640)
+render_target_update_mode = 4
+
+[node name="StaticBody2D" type="StaticBody2D" parent="SubViewportContainer/SubViewport/Icon/SubViewportContainer/SubViewport" unique_id=1917434913]
+position = Vector2(320, 368)
+scale = Vector2(2, 2)
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="SubViewportContainer/SubViewport/Icon/SubViewportContainer/SubViewport/StaticBody2D" unique_id=1617509751]
+position = Vector2(0, 4)
+polygon = PackedVector2Array(-64, -164, -112, -164, -112, 84, -88, 108, 88, 108, 112, 84, 112, -164, 64, -164, 64, 44, 48, 60, -48, 60, -64, 44)
+
+[node name="Polygon2D" type="Polygon2D" parent="SubViewportContainer/SubViewport/Icon/SubViewportContainer/SubViewport/StaticBody2D/CollisionPolygon2D" unique_id=1438788794]
+clip_children = 2
+color = Color(0.3882353, 0.60784316, 1, 1)
+polygon = PackedVector2Array(-64, -164, -112, -164, -112, 84, -88, 108, 88, 108, 112, 84, 112, -164, 64, -164, 64, 44, 48, 60, -48, 60, -64, 44)
+script = ExtResource("1_xr3bc")
+metadata/_edit_lock_ = true
+
+[node name="TextureRect2" type="TextureRect" parent="SubViewportContainer/SubViewport/Icon/SubViewportContainer/SubViewport/StaticBody2D/CollisionPolygon2D/Polygon2D" unique_id=296046527]
+material = SubResource("CanvasItemMaterial_ksg4y")
+offset_left = -1331.0923
+offset_top = 238.78568
+offset_right = -710.7989
+offset_bottom = 3229.8389
+rotation = -1.5707964
+texture = SubResource("GradientTexture1D_3umuw")
+metadata/_edit_lock_ = true
+
+[node name="TextureRect" type="TextureRect" parent="SubViewportContainer/SubViewport/Icon/SubViewportContainer/SubViewport/StaticBody2D" unique_id=1606237036]
+material = SubResource("CanvasItemMaterial_2c6oc")
+offset_left = 1568.0
+offset_top = -280.0
+offset_right = 2440.3245
+offset_bottom = 2711.0532
+rotation = 1.5707964
+texture = SubResource("GradientTexture1D_3umuw")
+
+[node name="PFPBall" parent="SubViewportContainer/SubViewport/Icon/SubViewportContainer/SubViewport/StaticBody2D" unique_id=1941204685 instance=ExtResource("2_cnh6e")]
+process_mode = 4
+position = Vector2(-30.5, 32)
+bg_hidden = true
+texture = ExtResource("3_66mcw")
+disable_clipping = true
+
+[node name="PFPBall2" parent="SubViewportContainer/SubViewport/Icon/SubViewportContainer/SubViewport/StaticBody2D" unique_id=1577557403 instance=ExtResource("2_cnh6e")]
+process_mode = 4
+position = Vector2(32, 16)
+bg_hidden = true
+texture = ExtResource("4_rp2p4")
+disable_clipping = true
+
+[node name="PFPBall3" parent="SubViewportContainer/SubViewport/Icon/SubViewportContainer/SubViewport/StaticBody2D" unique_id=1132590471 instance=ExtResource("2_cnh6e")]
+process_mode = 4
+position = Vector2(-29.5, -32)
+bg_hidden = true
+texture = ExtResource("3_cnh6e")
+disable_clipping = true
+
+[node name="PFPBall6" parent="SubViewportContainer/SubViewport/Icon/SubViewportContainer/SubViewport/StaticBody2D" unique_id=1139641390 instance=ExtResource("2_cnh6e")]
+process_mode = 4
+position = Vector2(32, -48)
+bg_hidden = true
+texture = ExtResource("3_cnh6e")
+disable_clipping = true
+
+[node name="PFPBall4" parent="SubViewportContainer/SubViewport/Icon/SubViewportContainer/SubViewport/StaticBody2D" unique_id=2083682134 instance=ExtResource("2_cnh6e")]
+process_mode = 4
+position = Vector2(-32, -96)
+bg_hidden = true
+texture = ExtResource("4_rp2p4")
+disable_clipping = true
+
+[node name="PFPBall5" parent="SubViewportContainer/SubViewport/Icon/SubViewportContainer/SubViewport/StaticBody2D" unique_id=1138991428 instance=ExtResource("2_cnh6e")]
+process_mode = 4
+position = Vector2(29.5, -112)
+bg_hidden = true
+texture = ExtResource("3_66mcw")
+disable_clipping = true

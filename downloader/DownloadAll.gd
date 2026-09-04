@@ -45,6 +45,7 @@ func populate_entry_list(
 ):
 	lines = FileAccess.get_file_as_string(path).split("\n");
 	for line in lines:
+		line = line.strip_edges();
 		if line.begins_with("//"):
 			continue;
 		var entry := LogEntry.parse_log_line(line);

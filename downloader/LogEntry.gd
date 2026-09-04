@@ -25,7 +25,7 @@ var username := "";
 var alt_name := "";
 var comment := "";
 
-var image: Image;
+var texture: Texture2D;
 
 # Where to download the PFP to.
 var platform_id := "";

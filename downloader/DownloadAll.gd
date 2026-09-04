@@ -81,7 +81,7 @@ func do_downloads(entries: Array[LogEntry]) -> void:
 						Global.print_text("---manual: " + entry.username);
 				else:
 					Global.print_text("----FAIL: " + entry.username);
-		entry.image = downloader.pfp_image;
+		entry.texture = ImageTexture.create_from_image(downloader.pfp_image);
 		if !downloader.is_manual && !downloader.disabled && !downloader.got_from_cache:
 			await get_tree().create_timer(1).timeout;
 	

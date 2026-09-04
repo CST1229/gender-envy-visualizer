@@ -81,7 +81,7 @@ func _ready() -> void:
 	
 	var ball_count := 0;
 	for entry in list:
-		if !entry.image:
+		if !entry.texture:
 			continue;
 		ball_count += 1;
 	entry_count.text = entry_count.text % ball_count;
@@ -108,7 +108,7 @@ func _ready() -> void:
 	var i := 0;
 	cursor.position = start_pos.position;
 	for entry in list:
-		if !entry.image:
+		if !entry.texture:
 			continue;
 		var ball: PFPBall = pfp_ball_scene.instantiate();
 		ball.position = cursor.position;
@@ -122,7 +122,7 @@ func _ready() -> void:
 		add_child(ball);
 		balls.append(ball);
 		
-		var texture := ImageTexture.create_from_image(entry.image);
+		var texture := entry.texture;
 		ball.texture = texture;
 		ball.entry = entry;
 		ball.z_index = i;

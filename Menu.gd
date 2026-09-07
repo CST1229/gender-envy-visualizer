@@ -5,6 +5,8 @@ extends Control
 @onready var combined: Button = $HBoxContainer/VBoxContainer/Combined;
 @onready var download: Button = $HBoxContainer/VBoxContainer/Download;
 @onready var stats: Button = $HBoxContainer/VBoxContainer/Stats;
+@onready var reimport: Button = $HBoxContainer/VBoxContainer/Reimport;
+
 @onready var list_status: Label = $HBoxContainer/VBoxContainer/ListStatus;
 @onready var mute: Button = $HBoxContainer/VBoxContainer/MuteHints/Mute;
 @onready var hints: Button = $HBoxContainer/VBoxContainer/MuteHints/Hints;
@@ -13,6 +15,7 @@ extends Control
 
 func _ready() -> void:
 	update_console();
+	Global.console_changed.connect(update_console);
 	
 	Global.coming_from_menu = true;
 	main.pressed.connect(func() -> void:
@@ -36,6 +39,29 @@ func _ready() -> void:
 		await loading_text();
 		get_tree().change_scene_to_file("res://misc_utils/Stats.tscn");
 	);
+	reimport.pressed.connect(func():
+		if !OS.has_feature("editor"):
+			Global.print_err("Only in editor build!");
+			return;
+		
+		Global.print_text("Running %s --headless --import..." % OS.get_executable_path());
+		await get_tree().process_frame;
+		await get_tree().process_frame;
+		
+		var output := [];
+		var exit_code := OS.execute(
+			OS.get_executable_path(),
+			["--headless", "--import"],
+			output, true
+		);
+		Global.print_text("\n".join(output));
+		Global.print_text("Import exited with code " + str(exit_code));
+		if exit_code == 0:
+			Global.print_text("Success!");
+		else:
+			Global.print_text("Failure!");
+	);
+	
 	hints.pressed.connect(func() -> void:
 		p("----- Global keybinds:");
 		p("ESC: return to menu");

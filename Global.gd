@@ -48,9 +48,12 @@ func _input(ev: InputEvent) -> void:
 func print_text(string: String) -> void:
 	print(string);
 	console_log += string + "\n";
+	console_changed.emit();
 	
 func print_err(string: String) -> void:
 	printerr(string);
 	console_log += "ERR: " + string + "\n";
+	console_changed.emit();
 
+signal console_changed;
 signal mute_changed;

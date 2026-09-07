@@ -5,6 +5,8 @@ extends Control
 var downloaders: Array[Downloader] = [];
 @onready var loading_label: Label = $LoadingLabel;
 
+var cache_loads: Dictionary[LogEntry, String] = {};
+
 var lines := PackedStringArray();
 
 
@@ -15,7 +17,6 @@ func _ready() -> void:
 			child.started_downloading.connect(func() -> void:
 				if loading_label:
 					loading_label.text = "Downloading missing PFPs...";
-					loading_label = null;
 			);
 			child.make_dir();
 	
@@ -27,6 +28,10 @@ func _ready() -> void:
 	populate_entry_list("the envies.txt", LogEntry.list, all_entries);
 	populate_entry_list("altpit.txt", LogEntry.altpit, all_entries);
 	await do_downloads(all_entries);
+	
+	loading_label.text = "Loading PFPs...";
+	while !cache_loads.is_empty():
+		await get_tree().process_frame;
 	
 	Global.print_text("Done downloading/fetching pfps!");
 	if !goto_scene:
@@ -56,6 +61,7 @@ func populate_entry_list(
 		all_entries.append(entry);
 
 func do_downloads(entries: Array[LogEntry]) -> void:
+	cache_loads.clear();
 	var do_logs := true;
 	# log cached and manual images
 	var log_all := false;
@@ -67,14 +73,18 @@ func do_downloads(entries: Array[LogEntry]) -> void:
 			entry.platform_handle
 		);
 		
+		var cached_path := downloader.get_cached_path();
+		if cached_path != "":
+			var err := ResourceLoader.load_threaded_request(cached_path, "", true);
+			if err:
+				Global.print_err("Failed cache load: " + cached_path + " - " + error_string(err));
+			cache_loads[entry] = cached_path;
+			continue;
+		
 		await downloader.do_fetch();
 		if do_logs:
 			if downloader.pfp_image:
-				if downloader.got_from_cache:
-					if log_all:
-						Global.print_text("----CACHED: " + entry.username);
-				else:
-					Global.print_text("----FETCHED: " + entry.username);
+				Global.print_text("----FETCHED: " + entry.username);
 			else:
 				if downloader.is_manual || downloader.disabled:
 					if log_all:
@@ -82,6 +92,18 @@ func do_downloads(entries: Array[LogEntry]) -> void:
 				else:
 					Global.print_text("----FAIL: " + entry.username);
 		entry.texture = ImageTexture.create_from_image(downloader.pfp_image);
-		if !downloader.is_manual && !downloader.disabled && !downloader.got_from_cache:
+		if !downloader.is_manual && !downloader.disabled:
 			await get_tree().create_timer(1).timeout;
-	
+
+func _process(_delta: float) -> void:
+	for entry in cache_loads.keys():
+		var path := cache_loads[entry];
+		var status := ResourceLoader.load_threaded_get_status(path);
+		match status:
+			ResourceLoader.ThreadLoadStatus.THREAD_LOAD_INVALID_RESOURCE:
+				Global.print_err("Failed cache load: " + path + " - THREAD_LOAD_INVALID_RESOURCE");
+			ResourceLoader.ThreadLoadStatus.THREAD_LOAD_FAILED:
+				Global.print_err("Failed cache load: " + path + " - THREAD_LOAD_FAILED");
+			ResourceLoader.ThreadLoadStatus.THREAD_LOAD_LOADED:
+				entry.texture = ResourceLoader.load_threaded_get(path);
+				cache_loads.erase(entry);

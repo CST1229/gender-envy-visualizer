@@ -11,7 +11,6 @@ extends Node
 
 var error_msg := "";
 var pfp_image: Image;
-var got_from_cache := false;
 
 func _ready() -> void:
 	download_complete.connect(func(image: Image, res: String) -> void:
@@ -23,73 +22,42 @@ func _ready() -> void:
 			);
 		else:
 			pass
-			#if !got_from_cache:
-				#Global.print_text(
-					#"Successfully loaded online PFP for " + platform_id +
-					#" handle " + target_handle + "!"
-				#);
-			#else:
-				#Global.print_text(
-					#"Successfully loaded cached PFP for " + platform_id +
-					#" handle " + target_handle + "!"
-				#);
 		
 		download_done.emit();
 	, ConnectFlags.CONNECT_DEFERRED);
 
 func do_fetch() -> void:
 	pfp_image = null;
-	got_from_cache = false;
 	error_msg = "Loading...";
 	
 	var cache_path := get_cache_path() if download_to == "" else download_to;
-	var cache_path_jpeg := cache_path.get_basename() + ".jpeg";
 	make_dir();
-	if fetch_pfp_from_cache(cache_path):
-		pass
-	elif fetch_pfp_from_cache(cache_path_jpeg):
-		pass
+	if disabled:
+		download_complete.emit(
+			null, "Who is " + target_handle + "? Put it in " + get_cache_path()
+		);
+	elif !OS.has_feature("editor") || OS.has_feature("web"):
+		started_downloading.emit();
+		download_complete.emit(
+			null, "Can't download PFPs in exported builds"
+		);
 	else:
-		if disabled:
-			download_complete.emit(
-				null, "Who is " + target_handle + "? Put it in " + get_cache_path()
-			);
-		elif !OS.has_feature("editor") || OS.has_feature("web"):
-			started_downloading.emit();
-			download_complete.emit(
-				null, "Can't download PFPs in exported builds"
-			);
-		else:
-			started_downloading.emit();
-			_fetch_pfp();
+		started_downloading.emit();
+		_fetch_pfp();
 	await download_done;
 	
-	if pfp_image && !got_from_cache:
+	if pfp_image:
 		LogEntry.pfp_cache[cache_path] = pfp_image;
 		pfp_image.save_png(cache_path);
 
-func fetch_pfp_from_cache(cache_path: String) -> bool:
-	if !FileAccess.file_exists(cache_path) && !FileAccess.file_exists(cache_path + ".import"):
-		return false;
-	if cache_path in LogEntry.pfp_cache:
-		error_msg = "";
-		pfp_image = LogEntry.pfp_cache[cache_path];
-		got_from_cache = true;
-		download_complete.emit(pfp_image, error_msg);
-		return true;
-	
-	var texture: Texture2D = load(cache_path);
-	if !texture:
-		pfp_image = null;
-		error_msg = "Failed to load() cached PFP image: " + cache_path;
-		download_complete.emit(pfp_image, error_msg);
-		return true;
-	
-	error_msg = "";
-	pfp_image = texture.get_image();
-	got_from_cache = true;
-	download_complete.emit(pfp_image, error_msg);
-	return true;
+func get_cached_path() -> String:
+	var cache_path := get_cache_path() if download_to == "" else download_to;
+	var cache_path_jpeg := cache_path.get_basename() + ".jpeg";
+	if FileAccess.file_exists(cache_path + ".import"):
+		return cache_path;
+	elif FileAccess.file_exists(cache_path_jpeg + ".import"):
+		return cache_path_jpeg;
+	return "";
 
 func _fetch_pfp() -> void:
 	download_complete.emit(null, "Not implemented");

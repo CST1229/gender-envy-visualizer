@@ -75,9 +75,14 @@ func do_downloads(entries: Array[LogEntry]) -> void:
 		
 		var cached_path := downloader.get_cached_path();
 		if cached_path != "":
-			var err := ResourceLoader.load_threaded_request(cached_path, "", true);
+			var err := ResourceLoader.load_threaded_request(
+				cached_path, "", true
+			);
 			if err:
-				Global.print_err("Failed cache load: " + cached_path + " - " + error_string(err));
+				Global.print_err(
+					"Failed cache load: " + cached_path + " - " + \
+					error_string(err) + " - use Reimport PFPs!"
+				);
 			cache_loads[entry] = cached_path;
 			continue;
 		
@@ -101,9 +106,15 @@ func _process(_delta: float) -> void:
 		var status := ResourceLoader.load_threaded_get_status(path);
 		match status:
 			ResourceLoader.ThreadLoadStatus.THREAD_LOAD_INVALID_RESOURCE:
-				Global.print_err("Failed cache load: " + path + " - THREAD_LOAD_INVALID_RESOURCE");
+				Global.print_err(
+					"Failed cache load: " + path + \
+					" - THREAD_LOAD_INVALID_RESOURCE - use Reimport PFPs!"
+				);
 			ResourceLoader.ThreadLoadStatus.THREAD_LOAD_FAILED:
-				Global.print_err("Failed cache load: " + path + " - THREAD_LOAD_FAILED");
+				Global.print_err(
+					"Failed cache load: " + path + \
+					" - THREAD_LOAD_FAILED - use Reimport PFPs!"
+				);
 			ResourceLoader.ThreadLoadStatus.THREAD_LOAD_LOADED:
 				entry.texture = ResourceLoader.load_threaded_get(path);
 				cache_loads.erase(entry);

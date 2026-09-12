@@ -19,24 +19,19 @@ func _ready() -> void:
 	
 	Global.coming_from_menu = true;
 	main.pressed.connect(func() -> void:
-		await loading_text();
 		get_tree().change_scene_to_file("res://ballpit/BallpitAltMusicNew.tscn");
 	);
 	altpit.pressed.connect(func() -> void:
-		await loading_text();
 		get_tree().change_scene_to_file("res://ballpit/Altpit.tscn");
 	);
 	combined.pressed.connect(func() -> void:
-		await loading_text();
 		get_tree().change_scene_to_file("res://ballpit/CombinedBallpit.tscn");
 	);
 	download.pressed.connect(func() -> void:
-		await loading_text(true);
 		Global.goto_after_download = load("res://Menu.tscn");
 		get_tree().change_scene_to_file("res://downloader/DownloadAll.tscn");
 	);
 	stats.pressed.connect(func() -> void:
-		await loading_text();
 		get_tree().change_scene_to_file("res://misc_utils/Stats.tscn");
 	);
 	reimport.pressed.connect(func():

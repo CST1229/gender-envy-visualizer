@@ -20,6 +20,7 @@ func _ready() -> void:
 			);
 			child.make_dir();
 	
+	loading_label.text = "";
 	await get_tree().process_frame;
 	
 	LogEntry.list.clear();

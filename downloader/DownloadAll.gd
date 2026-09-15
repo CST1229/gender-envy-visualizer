@@ -3,6 +3,7 @@ extends Control
 @export var goto_scene := true;
 
 var downloaders: Array[Downloader] = [];
+@onready var console_label: RichTextLabel = $ConsoleLabel;
 @onready var loading_label: Label = $LoadingLabel;
 
 var cache_loads: Dictionary[LogEntry, String] = {};
@@ -11,6 +12,12 @@ var lines := PackedStringArray();
 
 
 func _ready() -> void:
+	var console_tail := Global.console_log.length();
+	console_label.text = "";
+	Global.console_changed.connect(func() -> void:
+		console_label.text = Global.console_log.right(-console_tail);
+	);
+	
 	for child in get_children():
 		if child is Downloader:
 			downloaders.append(child);
@@ -34,7 +41,7 @@ func _ready() -> void:
 	while !cache_loads.is_empty():
 		await get_tree().process_frame;
 	
-	Global.print_text("Done downloading/fetching pfps!");
+	Global.print_text("Done loading pfps!");
 	if !goto_scene:
 		Global.print_text("------");
 		Global.print_text("Regular entries: " + str(LogEntry.list.size()));
@@ -84,9 +91,13 @@ func do_downloads(entries: Array[LogEntry]) -> void:
 					"Failed cache load: " + cached_path + " - " + \
 					error_string(err) + " - use Reimport PFPs!"
 				);
+			if log_all:
+				Global.print_text("----CACHED: " + entry.username);
 			cache_loads[entry] = cached_path;
 			continue;
 		
+		if do_logs:
+			Global.print_text("Fetching: " + entry.username);
 		await downloader.do_fetch();
 		if do_logs:
 			if downloader.pfp_image:

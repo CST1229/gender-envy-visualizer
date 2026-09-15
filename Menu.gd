@@ -92,15 +92,11 @@ Altpit entries: %s" % [LogEntry.list.size(), LogEntry.altpit.size()];
 
 func update_console() -> void:
 	console_log.text = Global.console_log;
-	console_log.scroll_to_paragraph(INT32_MAX);
-	await get_tree().process_frame;
-	console_log.scroll_to_paragraph(INT32_MAX);
 
 func loading_text(force := false) -> void:
 	if LogEntry.list && LogEntry.list.size() > 0 && !force:
 		return;
 	console_log.text += "Loading...\n";
-	console_log.scroll_to_paragraph(INT32_MAX);
 	await get_tree().process_frame;
 	await get_tree().process_frame;
 

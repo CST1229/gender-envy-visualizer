@@ -11,6 +11,18 @@
 [ext_resource type="PackedScene" uid="uid://bc868kxwnxpgb" path="res://downloader/pfp_downloaders/OtherDownloader.tscn" id="8_erl3e"]
 [ext_resource type="PackedScene" uid="uid://4qh33wyi00c2" path="res://downloader/pfp_downloaders/DisqusDownloader.tscn" id="9_acj4u"]
 
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_acj4u"]
+content_margin_left = 16.0
+content_margin_top = 16.0
+content_margin_right = 16.0
+content_margin_bottom = 16.0
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_85s3q"]
+content_margin_left = 32.0
+content_margin_top = 32.0
+content_margin_right = 32.0
+content_margin_bottom = 32.0
+
 [node name="DownloadAll" type="Control" unique_id=1982837505]
 layout_mode = 3
 anchors_preset = 15
@@ -20,6 +32,20 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_467wq")
 
+[node name="ConsoleLabel" type="RichTextLabel" parent="." unique_id=1419544957]
+modulate = Color(1, 1, 1, 0.6862745)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/normal_font_size = 24
+theme_override_styles/normal = SubResource("StyleBoxEmpty_acj4u")
+text = "Console..."
+scroll_following = true
+vertical_alignment = 2
+
 [node name="LoadingLabel" type="Label" parent="." unique_id=1341679913]
 layout_mode = 1
 anchors_preset = 15
@@ -28,6 +54,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_font_sizes/font_size = 64
+theme_override_styles/normal = SubResource("StyleBoxEmpty_85s3q")
 text = "Loading PFPs..."
 horizontal_alignment = 1
 vertical_alignment = 1

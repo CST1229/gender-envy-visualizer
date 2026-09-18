@@ -37,24 +37,40 @@ theme_override_constants/separation = 16
 layout_mode = 2
 text = "Main Ballpit"
 
-[node name="Altpit" type="Button" parent="HBoxContainer/VBoxContainer" unique_id=518354007]
-layout_mode = 2
-text = "Altpit"
-
-[node name="Combined" type="Button" parent="HBoxContainer/VBoxContainer" unique_id=284646070]
-layout_mode = 2
-text = "Combined Ballpit"
-
 [node name="Download" type="Button" parent="HBoxContainer/VBoxContainer" unique_id=125597546]
 layout_mode = 2
 text = "Download/Load Logs"
 
-[node name="Stats" type="Button" parent="HBoxContainer/VBoxContainer" unique_id=1692876647]
+[node name="Read" type="Button" parent="HBoxContainer/VBoxContainer" unique_id=367094500]
 layout_mode = 2
+text = "Read the Log!"
+
+[node name="AltpitCombined" type="HBoxContainer" parent="HBoxContainer/VBoxContainer" unique_id=909602682]
+layout_mode = 2
+theme_override_constants/separation = 16
+
+[node name="Altpit" type="Button" parent="HBoxContainer/VBoxContainer/AltpitCombined" unique_id=518354007]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Altpit"
+
+[node name="Combined" type="Button" parent="HBoxContainer/VBoxContainer/AltpitCombined" unique_id=284646070]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Combined Ballpit"
+
+[node name="StatsReimport" type="HBoxContainer" parent="HBoxContainer/VBoxContainer" unique_id=492336430]
+layout_mode = 2
+theme_override_constants/separation = 16
+
+[node name="Stats" type="Button" parent="HBoxContainer/VBoxContainer/StatsReimport" unique_id=1692876647]
+layout_mode = 2
+size_flags_horizontal = 3
 text = "Stats"
 
-[node name="Reimport" type="Button" parent="HBoxContainer/VBoxContainer" unique_id=375162387]
+[node name="Reimport" type="Button" parent="HBoxContainer/VBoxContainer/StatsReimport" unique_id=375162387]
 layout_mode = 2
+size_flags_horizontal = 3
 text = "Reimport PFPs"
 
 [node name="Spacer" type="Control" parent="HBoxContainer/VBoxContainer" unique_id=1558362352]
@@ -66,7 +82,7 @@ layout_mode = 2
 theme_override_constants/line_spacing = 0
 theme_override_font_sizes/font_size = 24
 text = "Logs not loaded yet.
-Click any of the above buttons, or use Download/Load Logs."
+Enter the ballpit, or use the Download/Load Logs button."
 autowrap_mode = 3
 
 [node name="MuteHints" type="HBoxContainer" parent="HBoxContainer/VBoxContainer" unique_id=129673691]

@@ -1,6 +1,6 @@
 extends Node
 
-var console_log := "...Is it cis to make such an intricate project for *gender envy*?  -CST1229\
+var console_log := "...could you tell i'm incredibly jealous of trans women?    -CST1229\
 \n\nThis is the console log.\nStuff will go here.\n\n";
 var mute := false;
 

@@ -1,11 +1,12 @@
 extends Control
 
 @onready var main: Button = $HBoxContainer/VBoxContainer/Main;
-@onready var altpit: Button = $HBoxContainer/VBoxContainer/Altpit;
-@onready var combined: Button = $HBoxContainer/VBoxContainer/Combined;
+@onready var altpit: Button = $HBoxContainer/VBoxContainer/AltpitCombined/Altpit;
+@onready var combined: Button = $HBoxContainer/VBoxContainer/AltpitCombined/Combined;
 @onready var download: Button = $HBoxContainer/VBoxContainer/Download;
-@onready var stats: Button = $HBoxContainer/VBoxContainer/Stats;
-@onready var reimport: Button = $HBoxContainer/VBoxContainer/Reimport;
+@onready var stats: Button = $HBoxContainer/VBoxContainer/StatsReimport/Stats;
+@onready var reimport: Button = $HBoxContainer/VBoxContainer/StatsReimport/Reimport;
+@onready var read: Button = $HBoxContainer/VBoxContainer/Read;
 
 @onready var list_status: Label = $HBoxContainer/VBoxContainer/ListStatus;
 @onready var mute: Button = $HBoxContainer/VBoxContainer/MuteHints/Mute;
@@ -55,6 +56,9 @@ func _ready() -> void:
 			Global.print_text("Success!");
 		else:
 			Global.print_text("Failure!");
+	);
+	read.pressed.connect(func() -> void:
+		OS.shell_open("https://github.com/CST1229/gender-envy-visualizer/blob/master/the%20envies.txt");
 	);
 	
 	hints.pressed.connect(func() -> void:

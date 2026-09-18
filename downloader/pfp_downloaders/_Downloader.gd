@@ -57,6 +57,10 @@ func get_cached_path() -> String:
 		return cache_path;
 	elif FileAccess.file_exists(cache_path_jpeg + ".import"):
 		return cache_path_jpeg;
+	elif FileAccess.file_exists(cache_path):
+		Global.print_err("Cached PFP file not imported! Use Reimport PFPs! " + cache_path);
+	elif FileAccess.file_exists(cache_path_jpeg):
+		Global.print_err("Cached PFP file not imported! Use Reimport PFPs! " + cache_path_jpeg);
 	return "";
 
 func _fetch_pfp() -> void:

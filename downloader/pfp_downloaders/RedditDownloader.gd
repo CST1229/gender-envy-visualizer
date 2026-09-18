@@ -4,10 +4,14 @@ extends Downloader
 
 var headers := ["User-Agent: CSTsPFPFetcher/1.0 (by /u/CST1230)"];
 
+var opened_links := [];
+
 func _fetch_pfp() -> void:
 	var url := "https://www.reddit.com/user/" + target_handle + "/about.json";
 	
-	OS.shell_open(url);
+	if url not in opened_links:
+		OS.shell_open(url);
+		opened_links.append(url);
 	download_complete.emit(
 		null, "Hello, please download the PFP manually from " + url + " and stuff it in " +
 		get_cache_path() + " (Make sure to replace `&amp;` with `&`!)"

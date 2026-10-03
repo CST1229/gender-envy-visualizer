@@ -107,7 +107,7 @@ Honorable "constant" undated mentions:
 2026-07-08 04:31 - bsk@alice.averlong.com
 2026-07-08 14:07 - dsc@sorastream_
 2026-07-08 17:53 - twt@milliakisser
-+2026-07-08 19:29 - gh@Drakulix
++2026-07-08 19:29 - gh@Drakulix (Victoria Brekenfeld)
 2026-07-09 12:51 - bsk@miffymediocre.bsky.social
 2026-07-10 01:21 - bsk@spacebeer.net (dillie)
 2026-07-10 10:42 - gh@radiantgurl
@@ -305,9 +305,9 @@ Honorable "constant" undated mentions:
 2026-08-29 19:27 - twt@UltraVaultisrad
 2026-08-30 08:32 - twt@linkkling
 // 2026-08-31 08:58 - Sophie Wilson
-2026-08-31 10:03 - yt@PhilosophyTube
+2026-08-31 10:03 - yt@PhilosophyTube (Philosophy Tube)
 2026-08-31 11:20 - yt@middiedoesstuff
-2026-08-31 11:38 - yt@PhilosophyTube
+2026-08-31 11:38 - yt@PhilosophyTube (Philosophy Tube)
 2026-09-01 06:01 - gh@vgskye
 2026-09-01 10:10 - bsk@hollietaylor.bsky.social
 2026-09-01 17:24 - yt@Juliajohnson2018
@@ -336,7 +336,7 @@ Honorable "constant" undated mentions:
 2026-09-07 09:38 - twt@Burgerman42069
 2026-09-07 09:42 - twt@DrummerDuelin
 2026-09-07 13:30 - bsk@fsvgm777.eurosky.social
-+2026-09-08 00:20 - yt@crymayday
++2026-09-08 00:20 - yt@crymayday (marce)
 2026-09-10 12:09 - u/TransDeimos
 +2026-09-10 12:17 - yt@PlusInsta
 2026-09-10 15:57 - twt@TheLexikitty
@@ -370,3 +370,43 @@ Honorable "constant" undated mentions:
 2026-09-17 15:19 - u/FEMFATAL_451
 2026-09-17 17:33 - u/Blu_Moon_The_Fox
 2026-09-17 21:36 - twt@RoootTheFox
+2026-09-18 10:33 - twt@jxstfeli
+// 2026-09-19 21:51 - the silksong lead programmer guy
+2026-09-20 23:21 - yt@TheEepyHacker
+2026-09-21 01:45 - yt@Keleksos
+2026-09-21 14:51 - bsk@2d-emerald.bsky.social
+2026-09-21 18:43 - twt@DeerTGirl
+2026-09-22 12:49 - yt@JustM1ku
+2026-09-22 15:25 - twt@MerleTrains
+2026-09-24 01:58 - yt@silly-lilah
+2026-09-24 19:20 - gh@Mistium
+2026-09-27 00:16 - yt@PhilosophyTube (Philosophy Tube)
+2026-09-28 14:04 - yt@IAmUnderscore
+2026-09-28 14:08 - twt@KlaraaUwU
++2026-09-28 15:29 - gh@Drakulix (Victoria Brekenfeld)
+2026-09-28 22:57 - yt@crymayday (marce)
+2026-09-28 14:48 - gh@emneo-dev
+2026-09-30 19:21 - twt@jxstfeli
+2026-09-30 20:14 - twt@ZoeyVRC
+2026-09-30 20:14 - twt@caveagainfr
++2026-10-01 02:34 - yt@crymayday (marce)
+2026-10-01 03:16 - yt@bfcofficial19
+2026-10-01 03:36 - yt@SilviaSparks11
+2026-10-01 03:49 - yt@QueenXeina
+2026-10-01 16:47 - bsk@irisdescentbird.bsky.social
+2026-10-01 16:50 - twt@hannahwithfur
+2026-10-01 18:09 - twt@ClascyJitto
+2026-10-01 18:35 - twt@CatBeret_
+2026-10-01 19:07 - u/Grand-Honest
+2026-10-02 01:36 - bsk@bizabizow.bsky.social
+2026-10-02 01:35 - yt@silly_pau (SillyPau)
+2026-10-02 03:01 - u/imbi-dabadeedabadie
+2026-10-02 03:13 - u/Pyro_The_Engineer
+2026-10-02 03:35 - yt@pinkros3quartz
+2026-10-02 08:50 - yt@SemiSky57
+2026-10-02 10:09 - yt@Phoxphor
+2026-10-02 19:00 - twt@Sierealttv
+2026-10-03 01:12 - u/Luchazz
+2026-10-03 19:02 - yt@SimplySnaps
+2026-10-03 20:00 - twt@mild_sunrise
+2026-10-03 20:42 - yt@Greenmagegirl

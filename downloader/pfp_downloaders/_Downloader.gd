@@ -32,7 +32,11 @@ func do_fetch() -> void:
 	
 	var cache_path := get_cache_path() if download_to == "" else download_to;
 	make_dir();
-	if disabled:
+	if cache_path == "error":
+		download_complete.emit(
+			null, "Populate the cache!"
+		);
+	elif disabled:
 		download_complete.emit(
 			null, "Who is " + target_handle + "? Put it in " + get_cache_path()
 		);
@@ -59,8 +63,10 @@ func get_cached_path() -> String:
 		return cache_path_jpeg;
 	elif FileAccess.file_exists(cache_path):
 		Global.print_err("Cached PFP file not imported! Use Reimport PFPs! " + cache_path);
+		return "error";
 	elif FileAccess.file_exists(cache_path_jpeg):
 		Global.print_err("Cached PFP file not imported! Use Reimport PFPs! " + cache_path_jpeg);
+		return "error";
 	return "";
 
 func _fetch_pfp() -> void:

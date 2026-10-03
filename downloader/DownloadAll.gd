@@ -122,11 +122,13 @@ func _process(_delta: float) -> void:
 					"Failed cache load: " + path + \
 					" - THREAD_LOAD_INVALID_RESOURCE - use Reimport PFPs!"
 				);
+				cache_loads.erase(entry);
 			ResourceLoader.ThreadLoadStatus.THREAD_LOAD_FAILED:
 				Global.print_err(
 					"Failed cache load: " + path + \
 					" - THREAD_LOAD_FAILED - use Reimport PFPs!"
 				);
+				cache_loads.erase(entry);
 			ResourceLoader.ThreadLoadStatus.THREAD_LOAD_LOADED:
 				entry.texture = ResourceLoader.load_threaded_get(path);
 				cache_loads.erase(entry);

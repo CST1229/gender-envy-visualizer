@@ -17,7 +17,7 @@ var BEAT: float:
 @export var postselect_beats := 8.0;
 @export var list_id := "list";
 
-@export var show_all_zoom := 0.55;
+@export var show_all_zoom := 0.5;
 @export var show_ball_zoom := 1.5;
 
 @export var gravity_multiplier := 4.0;

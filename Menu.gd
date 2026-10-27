@@ -20,7 +20,7 @@ func _ready() -> void:
 	
 	Global.coming_from_menu = true;
 	main.pressed.connect(func() -> void:
-		get_tree().change_scene_to_file("res://ballpit/BallpitAltMusicNew.tscn");
+		get_tree().change_scene_to_file("res://ballpit/Ballpit.tscn");
 	);
 	altpit.pressed.connect(func() -> void:
 		get_tree().change_scene_to_file("res://ballpit/Altpit.tscn");

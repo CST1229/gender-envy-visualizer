@@ -9,6 +9,7 @@ key:
 name syntaxes:
 	handle (alternate name)
 	handle # comment
+	handle ## reason
 
 log started near 2026-06-29 4:00, earlier entries are retroactive and very incomplete (a TON of envy moments happened in 2025 and early 2026 too. and probably 2024 too)
 
@@ -418,7 +419,7 @@ Honorable "constant" undated mentions:
 2026-10-04 22:45 - u/An1nterestingName
 2026-10-05 01:17 - u/lost_transfem
 2026-10-05 06:26 - twt@BeaverchuYT
-+2026-10-05 07:13 - yt@MythrodakTV
++2026-10-05 07:13 - yt@MythrodakTV ## their story and planned-ness
 2026-10-05 08:29 - twt@yurkkiie
 2026-10-05 08:34 - yt@MythrodakTV
 2026-10-05 18:10 - yt@MythrodakTV
@@ -450,4 +451,55 @@ Honorable "constant" undated mentions:
 2026-10-16 05:37 - u/fwork
 2026-10-18 05:01 - da@theTransformistress
 2026-10-18 06:22 - twt@WiiUBootyCheeks
-+2026-10-18 12:53 - bsk@nozomilyn.bsky.social
++2026-10-18 12:53 - bsk@nozomilyn.bsky.social (Marilyn Nozomi)
+2026-10-19 12:52 - twt@DarkBlueThenml
+2026-10-19 14:31 - twt@LyrisTheKitori
+2026-10-19 17:09 - yt@clairebun
+2026-10-19 19:01 - gh@VoxelTek
+2026-10-20 07:45 - yt@NocturneVtuber
++2026-10-20 12:27 - yt@LoveImJennaFishcer
+2026-10-20 15:11 - twt@selectwario
+2026-10-21 07:57 - bsk@starrydustnova.bsky.social
+2026-10-21 21:30 - twt@Nyaalexi
+2026-10-22 07:10 - bsk@natgrayy.es
+2026-10-22 08:40 - yt@catgirlkiana
+2026-10-22 09:16 - twt@rayne_vr
+2026-10-22 14:07 - u/ZeeCat1
+2026-10-22 15:05 - bsk@alice.averlong.com
+2026-10-22 18:12 - u/Beep_Beep_Lettuce24
+2026-10-22 20:42 - u/SgtRed196
+2026-10-22 21:49 - twt@touhoufagyuri
+2026-10-22 21:50 - twt@CherryCharIotte
+2026-10-22 21:55 - twt@annagaming131
+2026-10-23 09:20 - twt@emnersonn ## their transformation
+2026-10-23 10:44 - twt@Quod_Matter
+2026-10-23 14:03 - yt@CCShakeCat
+2026-10-23 16:05 - yt@Gamechamp3000
+2026-10-23 16:30 - twt@stardustvoid_
+2026-10-23 17:13 - gh@endrift
+2026-10-23 17:16 - twt@snowmint0
+2026-10-23 17:17 - twt@camrymel
+2026-10-23 17:46 - u/4b686f61
+2026-10-23 20:26 - twt@novagaykitsune
+2026-10-23 20:31 - twt@erigummii
+2026-10-23 20:42 - u/Syphist
+2026-10-23 23:40 - u/NinjaK2k17
+2026-10-24 18:04 - twt@CherryCharIotte
+2026-10-24 18:04 - dsc@cheese8860
+2026-10-24 22:42 - twt@brandnewadriana
+2026-10-25 08:22 - twt@sctanf
+2026-10-25 10:44 - u/Isa-Baguette ## their relationship
+2026-10-25 19:02 - gh@marlenemeows
+2026-10-26 00:22 - yt@NeoCinnamon
+2026-10-26 00:58 - twt@Leebondoop
+2026-10-26 14:32 - twt@Willowfoxxo
+2026-10-26 15:56 - twt@nyanotech
+2026-10-26 16:37 - Bluelight343 # https://mb.srb2.org/members/bluelight343.7365/
+2026-10-26 18:00 - twt@TallyTaIIs ## has a wife
+2026-10-26 18:14 - gh@MeliaDev
+2026-10-26 19:17 - u/Katmallow
+2026-10-26 20:02 - twt@cobaltbw
+2026-10-26 21:30 - disqus@Lydia_Scribe
+2026-10-27 08:36 - twt@_lyraaaa_
+2026-10-27 09:21 - twt@sunsetsandstrm
+2026-10-27 19:59 - u/TheLuckyCuber999BACK

@@ -17,10 +17,13 @@ var BEAT: float:
 @export var postselect_beats := 8.0;
 @export var list_id := "list";
 
+@export var initial_zoom := 0.7;
 @export var show_all_zoom := 0.5;
 @export var show_ball_zoom := 1.5;
 
 @export var gravity_multiplier := 4.0;
+
+const CAMERA_POS_MULT = 0.8;
 
 @onready var start_pos: Marker2D = $StartPos;
 @onready var end_pos: Marker2D = $EndPos;
@@ -169,7 +172,7 @@ func wait_beats(beats: float, thread: String = "", unskippable := false):
 		await get_tree().physics_frame;
 
 func do_glows() -> void:
-	camera.zoom = Vector2.ONE;
+	camera.zoom = Vector2.ONE * initial_zoom;
 	target_zoom = Vector2.ONE * show_all_zoom;
 	await wait_beats(start_glows_beats, "glows", true);
 	target_zoom = Vector2.ONE * show_ball_zoom;
@@ -179,7 +182,7 @@ func do_glows() -> void:
 	for ball in balls:
 		highlight_ball(ball);
 		camera.position = ball.position;
-		camera.position.x *= 0.75;
+		camera.position.x *= CAMERA_POS_MULT;
 		
 		await wait_beats(ball_beats, "glows");
 		prev_ball = ball;
@@ -302,6 +305,9 @@ func unclick_balls() -> void:
 			clicked_ball.z_index = balls.size() + clicked_ball.index;
 			clear_ui_timer.start();
 		clicked_ball = null;
+
+func _process(_delta: float) -> void:
+	music.pitch_scale = Engine.time_scale;
 
 func _physics_process(delta: float) -> void:
 	var cam_weight := 1.0 - exp(-1.0 * delta);

@@ -1,11 +1,11 @@
-[gd_scene format=3 uid="uid://dm2mrkuccb4v6"]
+[gd_scene format=3 uid="uid://c3fwkevjfphk0"]
 
-[ext_resource type="Script" uid="uid://c7u4ery81v4b1" path="res://ballpit/Ballpit.gd" id="1_myxqv"]
-[ext_resource type="Script" uid="uid://c564dd0f02rcc" path="res://downloader/GotoHereAfterDownload.gd" id="2_k2jv5"]
-[ext_resource type="Script" uid="uid://box7vch4d13pi" path="res://ballpit/objects/AttachedPolygon2D.gd" id="2_lxbrw"]
-[ext_resource type="PackedScene" uid="uid://dlwwjyuatd4lx" path="res://ballpit/objects/PFPBall.tscn" id="2_twyjn"]
-[ext_resource type="AudioStream" uid="uid://bxwqm8t8pa4qj" path="res://ballpit/assets/D_BLUSTR.mid.ogg" id="3_lxbrw"]
-[ext_resource type="Script" uid="uid://col7s4d70biiw" path="res://ballpit/objects/EditorOnly.gd" id="3_xosqd"]
+[ext_resource type="Script" uid="uid://c7u4ery81v4b1" path="res://ballpit/Ballpit.gd" id="1_ire1x"]
+[ext_resource type="AudioStream" uid="uid://dnvwgku6vnaqb" path="res://ballpit/assets/dark_castle.mp3" id="2_oje3x"]
+[ext_resource type="PackedScene" uid="uid://dlwwjyuatd4lx" path="res://ballpit/objects/PFPBall.tscn" id="2_op8rf"]
+[ext_resource type="Script" uid="uid://c564dd0f02rcc" path="res://downloader/GotoHereAfterDownload.gd" id="2_x22h3"]
+[ext_resource type="Script" uid="uid://col7s4d70biiw" path="res://ballpit/objects/EditorOnly.gd" id="3_bam5y"]
+[ext_resource type="Script" uid="uid://box7vch4d13pi" path="res://ballpit/objects/AttachedPolygon2D.gd" id="5_mlx2y"]
 
 [sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_twyjn"]
 blend_mode = 1
@@ -39,102 +39,249 @@ font_size = 24
 outline_size = 16
 outline_color = Color(0, 0, 0, 1)
 
-[sub_resource type="LabelSettings" id="LabelSettings_xosqd"]
-font_size = 32
-outline_size = 24
-outline_color = Color(0, 0, 0, 1)
-
 [node name="Ballpit" type="Node2D" unique_id=1987057312]
-script = ExtResource("1_myxqv")
+script = ExtResource("1_ire1x")
+BPM = 355.0
+ball_drop_frame_wait = 0
+ball_drop_beat_wait = 0.063
+ball_speed = 48.0
+start_glows_beats = 32.0
+postselect_beats = 16.0
+show_all_zoom = 0.53
+show_ball_zoom = 1.2
+gravity_multiplier = 40.0
 
 [node name="GotoHereAfterDownload" type="Node" parent="." unique_id=1966289395]
-script = ExtResource("2_k2jv5")
+script = ExtResource("2_x22h3")
 
 [node name="StartPos" type="Marker2D" parent="." unique_id=864034311]
-position = Vector2(-256, -672)
+position = Vector2(-992, -720)
 
-[node name="PFPBall" parent="StartPos" unique_id=1941204685 instance=ExtResource("2_twyjn")]
+[node name="PFPBall" parent="StartPos" unique_id=420056789 instance=ExtResource("2_op8rf")]
 process_mode = 4
 modulate = Color(1, 1, 1, 0.40392157)
-script = ExtResource("3_xosqd")
+script = ExtResource("3_bam5y")
 
-[node name="PFPBall2" parent="StartPos" unique_id=108625339 instance=ExtResource("2_twyjn")]
+[node name="PFPBall2" parent="StartPos" unique_id=108625339 instance=ExtResource("2_op8rf")]
 process_mode = 4
 modulate = Color(1, 1, 1, 0.40392157)
 position = Vector2(64, 0)
-script = ExtResource("3_xosqd")
+script = ExtResource("3_bam5y")
 
-[node name="PFPBall3" parent="StartPos" unique_id=1152521901 instance=ExtResource("2_twyjn")]
+[node name="PFPBall3" parent="StartPos" unique_id=1152521901 instance=ExtResource("2_op8rf")]
 process_mode = 4
 modulate = Color(1, 1, 1, 0.40392157)
 position = Vector2(128, 0)
-script = ExtResource("3_xosqd")
+script = ExtResource("3_bam5y")
 
-[node name="PFPBall4" parent="StartPos" unique_id=559591498 instance=ExtResource("2_twyjn")]
+[node name="PFPBall4" parent="StartPos" unique_id=559591498 instance=ExtResource("2_op8rf")]
 process_mode = 4
 modulate = Color(1, 1, 1, 0.40392157)
 position = Vector2(192, 0)
-script = ExtResource("3_xosqd")
+script = ExtResource("3_bam5y")
 
-[node name="PFPBall5" parent="StartPos" unique_id=1208833079 instance=ExtResource("2_twyjn")]
+[node name="PFPBall5" parent="StartPos" unique_id=1208833079 instance=ExtResource("2_op8rf")]
 process_mode = 4
 modulate = Color(1, 1, 1, 0.40392157)
 position = Vector2(256, 0)
-script = ExtResource("3_xosqd")
+script = ExtResource("3_bam5y")
 
-[node name="PFPBall6" parent="StartPos" unique_id=575673019 instance=ExtResource("2_twyjn")]
+[node name="PFPBall6" parent="StartPos" unique_id=575673019 instance=ExtResource("2_op8rf")]
 process_mode = 4
 modulate = Color(1, 1, 1, 0.40392157)
 position = Vector2(320, 0)
-script = ExtResource("3_xosqd")
+script = ExtResource("3_bam5y")
 
-[node name="PFPBall7" parent="StartPos" unique_id=2134211996 instance=ExtResource("2_twyjn")]
+[node name="PFPBall7" parent="StartPos" unique_id=2134211996 instance=ExtResource("2_op8rf")]
 process_mode = 4
 modulate = Color(1, 1, 1, 0.40392157)
 position = Vector2(384, 0)
-script = ExtResource("3_xosqd")
+script = ExtResource("3_bam5y")
 
-[node name="PFPBall8" parent="StartPos" unique_id=936024728 instance=ExtResource("2_twyjn")]
+[node name="PFPBall8" parent="StartPos" unique_id=936024728 instance=ExtResource("2_op8rf")]
 process_mode = 4
 modulate = Color(1, 1, 1, 0.40392157)
 position = Vector2(448, 0)
-script = ExtResource("3_xosqd")
+script = ExtResource("3_bam5y")
+
+[node name="PFPBall9" parent="StartPos" unique_id=631230509 instance=ExtResource("2_op8rf")]
+process_mode = 4
+modulate = Color(1, 1, 1, 0.40392157)
+position = Vector2(512, 0)
+script = ExtResource("3_bam5y")
+
+[node name="PFPBall10" parent="StartPos" unique_id=17747898 instance=ExtResource("2_op8rf")]
+process_mode = 4
+modulate = Color(1, 1, 1, 0.40392157)
+position = Vector2(576, 0)
+script = ExtResource("3_bam5y")
+
+[node name="PFPBall11" parent="StartPos" unique_id=314404287 instance=ExtResource("2_op8rf")]
+process_mode = 4
+modulate = Color(1, 1, 1, 0.40392157)
+position = Vector2(640, 0)
+script = ExtResource("3_bam5y")
+
+[node name="PFPBall12" parent="StartPos" unique_id=2083860232 instance=ExtResource("2_op8rf")]
+process_mode = 4
+modulate = Color(1, 1, 1, 0.40392157)
+position = Vector2(704, 0)
+script = ExtResource("3_bam5y")
+
+[node name="PFPBall13" parent="StartPos" unique_id=1432724769 instance=ExtResource("2_op8rf")]
+process_mode = 4
+modulate = Color(1, 1, 1, 0.40392157)
+position = Vector2(768, 0)
+script = ExtResource("3_bam5y")
+
+[node name="PFPBall14" parent="StartPos" unique_id=143004289 instance=ExtResource("2_op8rf")]
+process_mode = 4
+modulate = Color(1, 1, 1, 0.40392157)
+position = Vector2(832, 0)
+script = ExtResource("3_bam5y")
+
+[node name="PFPBall15" parent="StartPos" unique_id=22391770 instance=ExtResource("2_op8rf")]
+process_mode = 4
+modulate = Color(1, 1, 1, 0.40392157)
+position = Vector2(896, 0)
+script = ExtResource("3_bam5y")
+
+[node name="PFPBall16" parent="StartPos" unique_id=801093103 instance=ExtResource("2_op8rf")]
+process_mode = 4
+modulate = Color(1, 1, 1, 0.40392157)
+position = Vector2(960, 0)
+script = ExtResource("3_bam5y")
+
+[node name="PFPBall17" parent="StartPos" unique_id=1142771032 instance=ExtResource("2_op8rf")]
+process_mode = 4
+modulate = Color(1, 1, 1, 0.40392157)
+position = Vector2(1024, 0)
+script = ExtResource("3_bam5y")
+
+[node name="PFPBall18" parent="StartPos" unique_id=855010384 instance=ExtResource("2_op8rf")]
+process_mode = 4
+modulate = Color(1, 1, 1, 0.40392157)
+position = Vector2(1088, 0)
+script = ExtResource("3_bam5y")
+
+[node name="PFPBall19" parent="StartPos" unique_id=122003620 instance=ExtResource("2_op8rf")]
+process_mode = 4
+modulate = Color(1, 1, 1, 0.40392157)
+position = Vector2(1152, 0)
+script = ExtResource("3_bam5y")
+
+[node name="PFPBall20" parent="StartPos" unique_id=1709853111 instance=ExtResource("2_op8rf")]
+process_mode = 4
+modulate = Color(1, 1, 1, 0.40392157)
+position = Vector2(1216, 0)
+script = ExtResource("3_bam5y")
+
+[node name="PFPBall21" parent="StartPos" unique_id=924388484 instance=ExtResource("2_op8rf")]
+process_mode = 4
+modulate = Color(1, 1, 1, 0.40392157)
+position = Vector2(1280, 0)
+script = ExtResource("3_bam5y")
+
+[node name="PFPBall22" parent="StartPos" unique_id=413538019 instance=ExtResource("2_op8rf")]
+process_mode = 4
+modulate = Color(1, 1, 1, 0.40392157)
+position = Vector2(1344, 0)
+script = ExtResource("3_bam5y")
+
+[node name="PFPBall23" parent="StartPos" unique_id=767974326 instance=ExtResource("2_op8rf")]
+process_mode = 4
+modulate = Color(1, 1, 1, 0.40392157)
+position = Vector2(1408, 0)
+script = ExtResource("3_bam5y")
+
+[node name="PFPBall24" parent="StartPos" unique_id=834842033 instance=ExtResource("2_op8rf")]
+process_mode = 4
+modulate = Color(1, 1, 1, 0.40392157)
+position = Vector2(1472, 0)
+script = ExtResource("3_bam5y")
+
+[node name="PFPBall25" parent="StartPos" unique_id=1798191455 instance=ExtResource("2_op8rf")]
+process_mode = 4
+modulate = Color(1, 1, 1, 0.40392157)
+position = Vector2(1536, 0)
+script = ExtResource("3_bam5y")
+
+[node name="PFPBall26" parent="StartPos" unique_id=1902965033 instance=ExtResource("2_op8rf")]
+process_mode = 4
+modulate = Color(1, 1, 1, 0.40392157)
+position = Vector2(1600, 0)
+script = ExtResource("3_bam5y")
+
+[node name="PFPBall27" parent="StartPos" unique_id=717834052 instance=ExtResource("2_op8rf")]
+process_mode = 4
+modulate = Color(1, 1, 1, 0.40392157)
+position = Vector2(1664, 0)
+script = ExtResource("3_bam5y")
+
+[node name="PFPBall28" parent="StartPos" unique_id=379839906 instance=ExtResource("2_op8rf")]
+process_mode = 4
+modulate = Color(1, 1, 1, 0.40392157)
+position = Vector2(1728, 0)
+script = ExtResource("3_bam5y")
+
+[node name="PFPBall29" parent="StartPos" unique_id=748744530 instance=ExtResource("2_op8rf")]
+process_mode = 4
+modulate = Color(1, 1, 1, 0.40392157)
+position = Vector2(1792, 0)
+script = ExtResource("3_bam5y")
+
+[node name="PFPBall30" parent="StartPos" unique_id=456338348 instance=ExtResource("2_op8rf")]
+process_mode = 4
+modulate = Color(1, 1, 1, 0.40392157)
+position = Vector2(1856, 0)
+script = ExtResource("3_bam5y")
+
+[node name="PFPBall31" parent="StartPos" unique_id=1599970833 instance=ExtResource("2_op8rf")]
+process_mode = 4
+modulate = Color(1, 1, 1, 0.40392157)
+position = Vector2(1920, 0)
+script = ExtResource("3_bam5y")
+
+[node name="PFPBall32" parent="StartPos" unique_id=251422832 instance=ExtResource("2_op8rf")]
+process_mode = 4
+modulate = Color(1, 1, 1, 0.40392157)
+position = Vector2(1984, 0)
+script = ExtResource("3_bam5y")
 
 [node name="Cursor" type="Marker2D" parent="." unique_id=1011396172]
 visible = false
 gizmo_extents = 0.0
 
 [node name="EndPos" type="Marker2D" parent="." unique_id=926651054]
-position = Vector2(256, -672)
+position = Vector2(992, -720)
 
-[node name="PFPBall2" parent="EndPos" unique_id=2015553876 instance=ExtResource("2_twyjn")]
+[node name="PFPBall2" parent="EndPos" unique_id=2015553876 instance=ExtResource("2_op8rf")]
 process_mode = 4
 modulate = Color(1, 1, 1, 0.40392157)
-script = ExtResource("3_xosqd")
+script = ExtResource("3_bam5y")
 
 [node name="StaticBody2D" type="StaticBody2D" parent="." unique_id=1310869920]
+position = Vector2(0, -64)
 
-[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="StaticBody2D" unique_id=1794255973]
+[node name="CollisionPolygon2D2" type="CollisionPolygon2D" parent="StaticBody2D" unique_id=676342704]
 position = Vector2(0, 96)
-scale = Vector2(1.6, 1.4)
-polygon = PackedVector2Array(-196, -448, -256, -448, -256, 256, 256, 256, 256, -448, 196, -448, 192, 160, 176, 192, -176, 192, -192, 160)
+polygon = PackedVector2Array(-1024, -784, -1152, -784, -1152, 624, 1152, 624, 1152, -784, 1024, -784, 1024, 496, -1024, 496)
 
-[node name="Polygon2D" type="Polygon2D" parent="StaticBody2D/CollisionPolygon2D" unique_id=1041664521]
+[node name="Polygon2D" type="Polygon2D" parent="StaticBody2D/CollisionPolygon2D2" unique_id=1755394157]
 clip_children = 2
 color = Color(0.3882353, 0.60784316, 1, 1)
-polygon = PackedVector2Array(-196, -448, -256, -448, -256, 256, 256, 256, 256, -448, 196, -448, 192, 160, 176, 192, -176, 192, -192, 160)
-script = ExtResource("2_lxbrw")
+polygon = PackedVector2Array(-1024, -784, -1152, -784, -1152, 624, 1152, 624, 1152, -784, 1024, -784, 1024, 496, -1024, 496)
+script = ExtResource("5_mlx2y")
 metadata/_edit_lock_ = true
 
-[node name="TextureRect2" type="TextureRect" parent="StaticBody2D/CollisionPolygon2D/Polygon2D" unique_id=78919763]
+[node name="TextureRect2" type="TextureRect" parent="StaticBody2D/CollisionPolygon2D2/Polygon2D" unique_id=1909723618]
 material = SubResource("CanvasItemMaterial_twyjn")
-offset_left = -1331.0923
-offset_top = 306.66666
-offset_right = -119.095215
-offset_bottom = 3297.72
+offset_left = -1451.9218
+offset_top = 762.36633
+offset_right = 1006.34534
+offset_bottom = 3874.249
 rotation = -1.5707964
 texture = SubResource("GradientTexture1D_cq4uw")
-metadata/_edit_lock_ = true
 
 [node name="TextureRect" type="TextureRect" parent="." unique_id=1954563771]
 material = SubResource("CanvasItemMaterial_lxbrw")
@@ -229,23 +376,8 @@ grow_vertical = 2
 text = "https://you.are.l"
 label_settings = SubResource("LabelSettings_twyjn")
 
-[node name="Warning" type="Label" parent="." unique_id=1935625580]
-z_index = 4094
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = -384.0
-offset_top = -240.0
-offset_right = 383.0
-offset_bottom = -147.0
-grow_horizontal = 2
-grow_vertical = 2
-text = "this one overfilled from the sheer amount of envy
-go to BallpitAltMusicNew.tscn instead"
-label_settings = SubResource("LabelSettings_xosqd")
-
 [node name="Music" type="AudioStreamPlayer" parent="." unique_id=340677985]
-stream = ExtResource("3_lxbrw")
+stream = ExtResource("2_oje3x")
 
 [node name="ClearUITimer" type="Timer" parent="." unique_id=932018823]
 wait_time = 0.1

@@ -9,5 +9,5 @@ ball_speed = 32.0
 ball_beats = 0.5
 list_id = "combined_list"
 
-[node name="Music" parent="." index="9" unique_id=340677985]
+[node name="Music" parent="." index="8" unique_id=340677985]
 stream = ExtResource("4_2pub5")

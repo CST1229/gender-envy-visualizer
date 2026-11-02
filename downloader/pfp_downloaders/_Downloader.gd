@@ -55,18 +55,23 @@ func do_fetch() -> void:
 		pfp_image.save_png(cache_path);
 
 func get_cached_path() -> String:
-	var cache_path := get_cache_path() if download_to == "" else download_to;
-	var cache_path_jpeg := cache_path.get_basename() + ".jpeg";
-	if FileAccess.file_exists(cache_path + ".import"):
-		return cache_path;
-	elif FileAccess.file_exists(cache_path_jpeg + ".import"):
-		return cache_path_jpeg;
-	elif FileAccess.file_exists(cache_path):
-		Global.print_err("Cached PFP file not imported! Use Reimport PFPs! " + cache_path);
-		return "error";
-	elif FileAccess.file_exists(cache_path_jpeg):
-		Global.print_err("Cached PFP file not imported! Use Reimport PFPs! " + cache_path_jpeg);
-		return "error";
+	var path_base := (
+		get_cache_path() if download_to == "" else download_to
+	).get_basename();
+	var try_paths := PackedStringArray([
+		path_base + ".png",
+		path_base + ".jpeg",
+		path_base + ".jpg"
+	]);
+	for path in try_paths:
+		if FileAccess.file_exists(path + ".import"):
+			return path;
+	for path in try_paths:
+		if FileAccess.file_exists(path):
+			Global.print_err(
+				"Cached PFP file not imported! Use Reimport PFPs! " + path
+			);
+			return "error";
 	return "";
 
 func _fetch_pfp() -> void:

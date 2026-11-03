@@ -1,3 +1,3 @@
 still cis tho
 
-![306-entry screenshot](./media/306.png)
+![503-entry screenshot](./media/503.png)

@@ -11,7 +11,7 @@ func _on_request_completed(
 	result: int, response_code: int, _headers: PackedStringArray, body: PackedByteArray
 ) -> void:
 	if result != OK or response_code != 200:
-		download_complete.emit(null, "Failed to reach the API.");
+		download_complete.emit(null, "Failed to reach the API. " + str(response_code));
 		return;
 
 	var json = JSON.parse_string(body.get_string_from_utf8());

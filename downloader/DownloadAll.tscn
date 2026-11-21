@@ -6,7 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://cdd38r46qq2b3" path="res://downloader/pfp_downloaders/BlueskyDownloader.tscn" id="4_8il1n"]
 [ext_resource type="PackedScene" uid="uid://bv441s32pdt1c" path="res://downloader/pfp_downloaders/RedditDownloader.tscn" id="5_vhc5v"]
 [ext_resource type="PackedScene" uid="uid://c0i8xdxsudfii" path="res://downloader/pfp_downloaders/GitHubDownloader.tscn" id="6_1yu2x"]
-[ext_resource type="PackedScene" uid="uid://ddjga7m0r2tld" path="res://downloader/pfp_downloaders/TwitterDownloaderIlo.tscn" id="7_erl3e"]
+[ext_resource type="PackedScene" uid="uid://brqmofgqfvxpl" path="res://downloader/pfp_downloaders/TwitterDownloader.tscn" id="7_acj4u"]
 [ext_resource type="PackedScene" uid="uid://dynifdgveh1m6" path="res://downloader/pfp_downloaders/DADownloader.tscn" id="8_b2v1h"]
 [ext_resource type="PackedScene" uid="uid://bc868kxwnxpgb" path="res://downloader/pfp_downloaders/OtherDownloader.tscn" id="8_erl3e"]
 [ext_resource type="PackedScene" uid="uid://4qh33wyi00c2" path="res://downloader/pfp_downloaders/DisqusDownloader.tscn" id="9_acj4u"]
@@ -69,7 +69,7 @@ vertical_alignment = 1
 
 [node name="GitHubDownloader" parent="." unique_id=1160214928 instance=ExtResource("6_1yu2x")]
 
-[node name="TwitterDownloaderIlo" parent="." unique_id=2030405994 instance=ExtResource("7_erl3e")]
+[node name="TwitterDownloader" parent="." unique_id=1570930521 instance=ExtResource("7_acj4u")]
 
 [node name="DADownloader" parent="." unique_id=609178525 instance=ExtResource("8_b2v1h")]
 

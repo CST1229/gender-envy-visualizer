@@ -1,23 +1,19 @@
 extends Downloader
 
-@onready var http_request: HTTPRequest = $HTTPRequest;
+@onready var http_request: HTTPRequest = $HTTPRequest
 
-func _ready() -> void:
-	http_request.request_completed.connect(_on_image_completed);
-	super();
+var opened_links := [];
 
 func _fetch_pfp() -> void:
-	var url := "https://unavatar.io/x/" + target_handle;
-	http_request.request(url);
-
-func _on_image_completed(
-	result: int, response_code: int, _headers: PackedStringArray, body: PackedByteArray
-) -> void:
-	if result != OK or response_code != 200:
-		download_complete.emit(null, "Failed to download PFP.");
-		return;
-
-	load_image(body);
+	var url := "https://twitter.com/" + target_handle + "/photo";
+	
+	if url not in opened_links:
+		OS.shell_open(url);
+		opened_links.append(url);
+	download_complete.emit(
+		null, "Hello, please download the PFP manually from " + url + " and stuff it in " +
+		get_cache_path()
+	);
 
 func get_url_for_handle(handle: String) -> String:
 	return "https://twitter.com/%s" % handle;

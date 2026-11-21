@@ -6,5 +6,6 @@
 script = ExtResource("1_mir2x")
 target_handle = "CST12292"
 platform_id = "twt"
+is_manual = true
 
 [node name="HTTPRequest" type="HTTPRequest" parent="." unique_id=1105241741]
